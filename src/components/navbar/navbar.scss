@@ -1,0 +1,18 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  height: 80px;
+
+  .navLeftSide img {
+    margin-top: 18px;
+    margin-left: 220px;
+  }
+
+  .navRightSide {
+    margin-top: 18px;
+    margin-right: 220px;
+    span {
+      margin-left: 10px;
+    }
+  }
+}
