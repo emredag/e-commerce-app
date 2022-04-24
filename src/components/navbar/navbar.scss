@@ -1,18 +1,28 @@
+@import "../../styles/color.scss";
+
 .navbar {
   display: flex;
   justify-content: space-between;
   height: 80px;
-
-  .navLeftSide img {
-    margin-top: 18px;
-    margin-left: 220px;
-  }
+  background-color: $navbar-bg-color;
+  padding: 20px 220px;
 
   .navRightSide {
-    margin-top: 18px;
-    margin-right: 220px;
-    span {
+    button {
+      color: $navbar-btn-color;
+      background-color: $navbar-btn-bg-color;
       margin-left: 10px;
+      border: none;
+      border-radius: 8px;
+      width: 125px;
+      height: 40px;
+      font-weight: bold;
+      // font-size: 15px;
+      img {
+        width: 12px;
+        height: 12px;
+        margin-right: 2px;
+      }
     }
   }
 }

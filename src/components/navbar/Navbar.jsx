@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Logo from "../../constants/icons/logo.svg";
 import { Link } from "react-router-dom";
+import registerLogo from "../../constants/icons/registerLogo.png";
+import loginLogo from "../../constants/icons/loginLogo.png";
 
 function Navbar() {
   const [isLogin, setIsLogin] = useState(false);
@@ -19,18 +21,21 @@ function Navbar() {
             <span>Ürün Ekle</span>
           </Link>
 
-          <Link to="profile">
+          <Link to="/profile">
             <span>Hesabım</span>
           </Link>
         </div>
       ) : (
         <div className="navRightSide">
-          <Link to="register">
-            <span>Register</span>
+          <Link to="/register">
+            <button class="btn btn-primary register">
+              <img src={registerLogo} alt="Register Logo" /> Üye Ol
+            </button>
           </Link>
-
-          <Link to="login">
-            <span>Login</span>
+          <Link to="/login">
+            <button class="btn btn-primary register">
+              <img src={loginLogo} alt="Login Logo" /> Giriş Yap
+            </button>
           </Link>
         </div>
       )}
