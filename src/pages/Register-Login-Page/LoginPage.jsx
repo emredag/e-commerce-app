@@ -1,10 +1,10 @@
 import React from "react";
-import Page from "../../components/register-login-page/Page";
+import SignPage from "../../components/register-login-page/SignPage";
 
 function LoginPage() {
   return (
     <>
-      <Page />
+      <SignPage />
     </>
   );
 }

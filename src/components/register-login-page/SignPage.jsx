@@ -3,15 +3,15 @@ import { useLocation } from "react-router-dom";
 import womanPhoto from "../../constants/images/formPageWoman.jpg";
 import logo from "../../constants/icons/logo.svg";
 import Form from "./Form";
+import { Link } from "react-router-dom";
 
-function Page() {
+function SignPage() {
   const { pathname } = useLocation();
 
   let title;
   let smallTitle;
   let submitButton;
   let otherButton;
-  let forgot;
 
   if (pathname === "/register") {
     title = "Üye Ol";
@@ -19,7 +19,10 @@ function Page() {
     submitButton = "Üye Ol";
     otherButton = (
       <div className="otherLink">
-        Hesabın var mı? <a href="/login">Giriş Yap</a>
+        Hesabın var mı?{" "}
+        <Link to="/login">
+          <span> Giriş Yap</span>
+        </Link>
       </div>
     );
   } else if (pathname === "/login") {
@@ -28,10 +31,12 @@ function Page() {
     submitButton = "Giriş";
     otherButton = (
       <div className="otherLink">
-        Hesabın yok mu? <a href="/register">Üye Ol</a>
+        Hesabın yok mu?{" "}
+        <Link to="/register">
+          <span> Üye Ol</span>
+        </Link>
       </div>
     );
-    forgot = "Şifremi Unuttum";
   }
 
   return (
@@ -53,7 +58,6 @@ function Page() {
               smallTitle={smallTitle}
               submitButton={submitButton}
               otherButton={otherButton}
-              forgot={forgot}
             />
           </div>
         </div>
@@ -62,4 +66,4 @@ function Page() {
   );
 }
 
-export default Page;
+export default SignPage;

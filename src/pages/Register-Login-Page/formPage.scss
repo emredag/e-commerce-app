@@ -57,7 +57,6 @@
       background: $input-bg-color 0% 0% no-repeat padding-box;
       border: none;
       border-radius: 8px;
-      color: #000;
       padding-left: 1rem;
       outline: none;
       width: 389px;
@@ -67,11 +66,15 @@
     .forgotPassword {
       margin-top: 5px;
       text-align: right;
+      color: #b1b1b1;
+      letter-spacing: 0px;
+      font: normal 12px/16px Nunito;
+      span {
+        cursor: pointer;
+      }
 
-      a {
-        color: #b1b1b1;
-        letter-spacing: 0px;
-        font: normal 12px/16px Nunito;
+      .hiddenForget {
+        visibility: hidden;
       }
     }
 
@@ -86,7 +89,7 @@
     .otherLink {
       margin-top: 20px;
       text-align: center;
-      a {
+      span {
         color: $submit-btn-bg;
       }
     }

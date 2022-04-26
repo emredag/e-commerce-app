@@ -1,8 +1,17 @@
 import { Formik } from "formik";
 import * as Yup from "yup";
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { fetchRegister } from "../../services/RegisterService";
+import { fetchLogin } from "../../services/LoginService";
 
 function Form(props) {
+  const { pathname } = useLocation();
+  const [user, setUser] = useState({});
+  const [error, setErorr] = useState(false);
+  const navigate = useNavigate();
+
   // *********** Yup Validation ***********
   const validation = Yup.object({
     email: Yup.string()
@@ -10,7 +19,8 @@ function Form(props) {
       .required("Eposta alanı zorunludur."),
     password: Yup.string()
       .required("Şifre alanı boş bırakılamaz.")
-      .min(8, "Password is too short - should be 8 chars minimum."),
+      .min(8, "Minimum 8 karakter.")
+      .max(20, "max 20 knk"),
   });
   // **************************************
 
@@ -23,10 +33,21 @@ function Form(props) {
         }}
         validationSchema={validation}
         onSubmit={(values, { resetForm, setSubmitting }) => {
-          console.log(values);
-          setTimeout(() => {
-            resetForm();
-          }, 1000);
+          {
+            pathname === "/register" &&
+              fetchRegister({
+                username: values.email,
+                email: values.email,
+                password: values.password,
+              });
+          }
+          {
+            pathname === "/login" &&
+              fetchLogin({
+                identifier: values.email,
+                password: values.password,
+              });
+          }
         }}
       >
         {({
@@ -72,7 +93,7 @@ function Form(props) {
                   name="password"
                   type="password"
                   placeholder="Şifreni gir"
-                  className="allInput"
+                  className="allInput "
                   value={values.password}
                   onChange={handleChange}
                 />
@@ -82,15 +103,15 @@ function Form(props) {
               </div>
 
               <div className="forgotPassword">
-                <a href=""> {props.forgot} </a>
+                <div
+                  className={pathname === "/login" ? `forgot` : `hiddenForget`}
+                >
+                  <span>Şifremi Unuttum</span>
+                </div>
               </div>
 
               <div className="submitButtonContainer">
-                <button
-                  type="submit"
-                  className="submitBtn"
-                  disabled={!dirty || isSubmitting}
-                >
+                <button type="submit" className="submitBtn" disabled={!dirty}>
                   {props.submitButton}
                 </button>
               </div>
