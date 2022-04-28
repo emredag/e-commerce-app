@@ -3,8 +3,10 @@ import * as Yup from "yup";
 import React, { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { fetchRegister } from "../../services/RegisterService";
-import { fetchLogin } from "../../services/LoginService";
+import { fetchRegister, fetchLogin } from "../../services/UserServices";
+import { toastError, toastSuccess } from "../../constants/Toastify";
+// import { toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
 
 function Form(props) {
   const { pathname } = useLocation();
@@ -39,14 +41,55 @@ function Form(props) {
                 username: values.email,
                 email: values.email,
                 password: values.password,
-              });
+              })
+                .then((response) => {
+                  //   navigate("/");
+                  //   setUser({
+                  //     email: response.data.user.email,
+                  //     token: response.data.jwt,
+                  //   });
+                  const signature = `Bearer ${response.data.jwt}`;
+                  axios.defaults.headers["Authorization"] = signature;
+                  console.log(response.data);
+                  toastSuccess(
+                    "Kayıt tamamlandı! Anasayfaya yönlendiriliyorsunuz."
+                  );
+                })
+                .catch((error) => {
+                  {
+                    error.response.status == "400" &&
+                      toastError("Email kullanılmakta.");
+                  }
+                  console.log(error.response);
+                });
           }
+
           {
             pathname === "/login" &&
               fetchLogin({
                 identifier: values.email,
                 password: values.password,
-              });
+              })
+                .then((response) => {
+                  //   navigate("/");
+                  //   setUser({
+                  //     email: response.data.user.email,
+                  //     token: response.data.jwt,
+                  //   });
+                  const signature = `Bearer ${response.data.jwt}`;
+                  axios.defaults.headers["Authorization"] = signature;
+                  console.log(signature);
+                  console.log(response.data.user.id);
+                  toastSuccess(
+                    "Giriş yapıldı! Anasayfaya yönlendiriliyorsunuz."
+                  );
+                })
+                .catch((error) => {
+                  {
+                    error.response.status == "400" &&
+                      toastError("Emailinizi veya şifreniz hatalı.");
+                  }
+                });
           }
         }}
       >
@@ -62,7 +105,7 @@ function Form(props) {
           <>
             <div className="formTitle">
               <div className="title">{props.title}</div>
-              <div className="smallTitle">
+              <div id="a" className="smallTitle">
                 Fırsatlardan yararlanmak için {props.smallTitle}
               </div>
             </div>
@@ -77,11 +120,10 @@ function Form(props) {
                   name="email"
                   type="text"
                   placeholder="Email@example.com"
-                  className="allInput"
+                  className={`allInput ${errors.email && "errorInput"}`}
                   value={values.email}
                   onChange={handleChange}
                 />
-                {errors.email && <div className="errorMsg">{errors.email}</div>}
               </div>
 
               <div className="passwordInput inputContainers">
@@ -93,13 +135,10 @@ function Form(props) {
                   name="password"
                   type="password"
                   placeholder="Şifreni gir"
-                  className="allInput "
+                  className={`allInput ${errors.password && "errorInput"}`}
                   value={values.password}
                   onChange={handleChange}
                 />
-                {errors.password && (
-                  <div className="errorMsg">{errors.password}</div>
-                )}
               </div>
 
               <div className="forgotPassword">
