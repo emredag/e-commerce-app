@@ -1,0 +1,60 @@
+@media only screen and (max-width: 1000px) {
+  .formContainer {
+    .leftSide {
+      display: none;
+    }
+    .rightSide {
+      width: 100%;
+
+      .rightSideContainer {
+        .logo img {
+          width: 149px;
+          height: 48px;
+        }
+
+        .forms {
+          width: 355px;
+          height: 435px;
+          margin-top: 24px;
+
+          .registerLoginForm {
+            .form {
+              margin-top: 30px;
+
+              .inputContainers {
+                .inputTitle {
+                  color: $input-title-color;
+                  display: block;
+                  font-weight: normal;
+                  margin-bottom: 5px;
+                  font-size: 15px;
+                  margin-left: 5px;
+                }
+
+                .allInput {
+                  background: $input-bg-color 0% 0% no-repeat padding-box;
+                  border: none;
+                  border-radius: 8px;
+                  padding-left: 0.5rem;
+                  outline: none;
+                  width: 315px;
+                  height: 45px;
+                }
+              }
+
+              .forgotPassword {
+                margin-top: 5px;
+              }
+
+              .submitBtn {
+                width: 315px;
+                height: 45px;
+                margin-top: 20px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
