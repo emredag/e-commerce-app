@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import React, { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { fetchRegister, fetchLogin } from "../../services/UserServices";
+import { fetchRegister, fetchLogin } from "../../services/Services";
 import { toastError, toastSuccess } from "../../constants/Toastify";
 // import { toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";

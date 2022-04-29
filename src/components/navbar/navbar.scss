@@ -3,25 +3,24 @@
 .navbar {
   display: flex;
   justify-content: space-between;
-  height: 80px;
+  height: 8rem;
   background-color: $navbar-bg-color;
-  padding: 20px 220px;
+  padding: 2rem 22rem;
 
   .navRightSide {
     button {
       color: $navbar-btn-color;
       background-color: $navbar-btn-bg-color;
-      margin-left: 10px;
+      margin-left: 1rem;
       border: none;
-      border-radius: 8px;
-      width: 125px;
-      height: 40px;
-      font-weight: bold;
-      // font-size: 15px;
+      border-radius: 0.8rem;
+      width: 12.5rem;
+      height: 4rem;
+      font: normal normal bold 1.5rem Nunito;
       img {
-        width: 12px;
-        height: 12px;
-        margin-right: 2px;
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-right: 0.2rem;
       }
     }
   }

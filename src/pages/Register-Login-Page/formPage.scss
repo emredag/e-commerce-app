@@ -29,17 +29,17 @@
     height: 100%;
 
     .logo img {
-      width: 224px;
-      height: 73px;
+      width: 2.24rem;
+      height: 7.3rem;
     }
 
     .forms {
-      width: 569px;
-      height: 554px;
-      margin-top: 55px;
+      width: 56.9rem;
+      height: 55.4rem;
+      margin-top: 5.5rem;
       background-color: $navbar-bg-color;
-      border-radius: 8px;
-      box-shadow: 0px 3px 12px #1e36480a;
+      border-radius: 0.8rem;
+      box-shadow: 0rem 0.3rem 1.2rem #1e36480a;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -54,53 +54,52 @@
 
           .title {
             font-weight: bold;
-            font-size: 32px;
+            font-size: 3.2rem;
           }
 
           .smallTitle {
-            margin-top: 10px;
-            font-size: 15px;
+            margin-top: 1rem;
+            font-size: 1.5rem;
             font-weight: normal;
           }
         }
 
         .form {
-          margin-top: 30px;
+          margin-top: 3rem;
 
           .inputContainers {
-            margin-top: 15px;
+            margin-top: 1.5rem;
 
             .inputTitle {
               color: $input-title-color;
               display: block;
               font-weight: normal;
-              margin-bottom: 5px;
-              font-size: 15px;
-              margin-left: 5px;
+              margin-bottom: 0.5rem;
+              font-size: 1.5rem;
+              margin-left: 0.5rem;
             }
 
             .allInput {
               background: $input-bg-color 0% 0% no-repeat padding-box;
               border: none;
-              border-radius: 8px;
+              border-radius: 0.8rem;
               padding-left: 1rem;
               outline: none;
-              width: 389px;
-              height: 45px;
+              width: 38.9rem;
+              height: 4.5rem;
             }
 
             .errorInput {
               background: $error-input 0% 0% no-repeat padding-box;
-              border: 1px solid $error-input-border;
+              border: 0.1rem solid $error-input-border;
             }
           }
 
           .forgotPassword {
-            margin-top: 5px;
+            margin-top: 0.5rem;
             text-align: right;
             color: #b1b1b1;
-            letter-spacing: 0px;
-            font: normal 12px/16px Nunito;
+            font: normal 1.2rem Nunito;
 
             span {
               cursor: pointer;
@@ -113,15 +112,15 @@
 
           .submitBtn {
             background: $submit-btn-bg 0% 0% no-repeat padding-box;
-            border-radius: 8px;
-            width: 389px;
-            height: 45px;
-            margin-top: 25px;
+            border-radius: 0.8rem;
+            width: 38.9rem;
+            height: 4.5rem;
+            margin-top: 2.5rem;
           }
         }
 
         .otherLink {
-          margin-top: 20px;
+          margin-top: 2rem;
           text-align: center;
           span {
             color: $submit-btn-bg;

@@ -2,13 +2,13 @@
 
 .Toastify__toast--error {
   background: $error-toast-bg 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 12px $error-toast-shadow;
-  border-radius: 8px;
+  box-shadow: 0rem 0.3rem 1.2rem $error-toast-shadow;
+  border-radius: 0.8rem;
   color: $error-input-border;
 }
 .Toastify__toast--success {
   background: rgb(14, 223, 14) 0% 0% no-repeat padding-box;
-  box-shadow: 0px 3px 12px $error-toast-shadow;
-  border-radius: 8px;
+  box-shadow: 0px 0.3rem 1.2rem $error-toast-shadow;
+  border-radius: 0.8rem;
   color: white;
 }

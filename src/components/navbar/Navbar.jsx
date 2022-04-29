@@ -28,12 +28,12 @@ function Navbar() {
       ) : (
         <div className="navRightSide">
           <Link to="/register">
-            <button class="btn btn-primary register">
+            <button className="btn btn-primary register">
               <img src={registerLogo} alt="Register Logo" /> Üye Ol
             </button>
           </Link>
           <Link to="/login">
-            <button class="btn btn-primary register">
+            <button className="btn btn-primary register">
               <img src={loginLogo} alt="Login Logo" /> Giriş Yap
             </button>
           </Link>
