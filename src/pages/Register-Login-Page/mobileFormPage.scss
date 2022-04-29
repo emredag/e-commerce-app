@@ -8,48 +8,48 @@
 
       .rightSideContainer {
         .logo img {
-          width: 149px;
-          height: 48px;
+          width: 14.9rem;
+          height: 4.8rem;
         }
 
         .forms {
-          width: 355px;
-          height: 435px;
-          margin-top: 24px;
+          width: 35.5rem;
+          height: 43.5rem;
+          margin-top: 2.4rem;
 
           .registerLoginForm {
             .form {
-              margin-top: 30px;
+              margin-top: 3rem;
 
               .inputContainers {
                 .inputTitle {
                   color: $input-title-color;
                   display: block;
                   font-weight: normal;
-                  margin-bottom: 5px;
-                  font-size: 15px;
-                  margin-left: 5px;
+                  margin-bottom: 0.5rem;
+                  font-size: 1.5rem;
+                  margin-left: 0.5rem;
                 }
 
                 .allInput {
                   background: $input-bg-color 0% 0% no-repeat padding-box;
                   border: none;
-                  border-radius: 8px;
+                  border-radius: 0.8rem;
                   padding-left: 0.5rem;
                   outline: none;
-                  width: 315px;
-                  height: 45px;
+                  width: 31.5rem;
+                  height: 4.5rem;
                 }
               }
 
               .forgotPassword {
-                margin-top: 5px;
+                margin-top: 0.5rem;
               }
 
               .submitBtn {
-                width: 315px;
-                height: 45px;
-                margin-top: 20px;
+                width: 31.5rem;
+                height: 4.5rem;
+                margin-top: 2rem;
               }
             }
           }

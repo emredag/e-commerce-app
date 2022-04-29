@@ -1,10 +1,70 @@
+@import "../../styles/color.scss";
+
 .indexPage {
   background-color: #f2f2f2;
-  height: 100vh;
+  // height: 100vh;
 }
-
 .indexContainer {
-  padding-top: 20px;
-  padding-left: 220px;
-  padding-right: 220px;
+  margin-left: 22rem;
+  margin-right: 22rem;
+
+  .indexBanner img {
+    width: 100%;
+    margin-top: 2rem;
+  }
+
+  .indexProducts {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 100%;
+
+    .productCard {
+      margin-top: 2rem;
+      width: 28rem;
+      height: 39.2rem;
+      background: $navbar-bg-color 0% 0% no-repeat padding-box;
+      border-radius: 0.8rem;
+
+      .productImg {
+        display: flex;
+        justify-content: center;
+
+        img {
+          width: 26rem;
+          height: 29.7rem;
+          background: transparent 0% 0% no-repeat padding-box;
+          border-radius: 0.8rem;
+          margin-top: 1rem;
+        }
+      }
+      .productInfo {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+
+        .productBrand {
+          font: normal normal bold 1.5rem Nunito;
+          color: $navbar-btn-color;
+        }
+
+        .productColor {
+          span {
+            font: normal normal bold 1.3rem Nunito;
+          }
+          font: normal normal normal 1.3rem Nunito;
+          color: $product-info-color;
+        }
+      }
+
+      .productPrice {
+        margin-left: 10px;
+        margin-top: 26px;
+        font: normal normal bold 1.8rem Nunito;
+        color: $product-info-color;
+      }
+    }
+  }
 }
