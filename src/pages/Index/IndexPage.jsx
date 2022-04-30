@@ -13,8 +13,6 @@ function IndexPage() {
     });
   }, []);
 
-  console.log(allProduct);
-
   return (
     <div className="indexPage">
       <div className="indexContainer">
@@ -28,7 +26,7 @@ function IndexPage() {
             return (
               <div className="productCard" key={index}>
                 <div className="productImg">
-                  <img src={`${baseURL}${item.image.url}`} alt="Ürün resmi" />
+                  <img src={`${baseURL}${item?.image?.url}`} alt="Ürün resmi" />
                 </div>
                 <div className="productInfo">
                   <div className="productBrand">{item.brand}</div>
