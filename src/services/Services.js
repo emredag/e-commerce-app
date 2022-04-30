@@ -11,6 +11,6 @@ export const fetchLogin = async (input) => {
 };
 
 export const fetchProducts = async () => {
-  const data = axios.get(URL.product);
+  const data = await axios.get("https://bootcamp.akbolat.net/products");
   return data;
 };

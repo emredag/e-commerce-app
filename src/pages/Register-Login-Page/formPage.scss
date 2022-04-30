@@ -11,11 +11,10 @@
 
 .leftSide {
   width: 40%;
-
-  img {
-    width: 100%;
-    height: 100vh;
-  }
+  background-image: url(../../constants/images/formPageWoman.jpg);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .rightSide {
@@ -29,7 +28,7 @@
     height: 100%;
 
     .logo img {
-      width: 2.24rem;
+      width: 22.4rem;
       height: 7.3rem;
     }
 
@@ -87,6 +86,7 @@
               outline: none;
               width: 38.9rem;
               height: 4.5rem;
+              font-size: 1.6rem;
             }
 
             .errorInput {
@@ -116,14 +116,17 @@
             width: 38.9rem;
             height: 4.5rem;
             margin-top: 2.5rem;
+            font: normal normal bold 1.8rem Nunito;
           }
         }
 
         .otherLink {
           margin-top: 2rem;
           text-align: center;
+          font: normal normal normal 1.5rem Nunito;
           span {
             color: $submit-btn-bg;
+            font: normal normal bold 1.5rem Nunito;
           }
         }
       }

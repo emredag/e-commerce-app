@@ -31,7 +31,7 @@ function SignPage() {
     submitButton = "Giriş";
     otherButton = (
       <div className="otherLink">
-        Hesabın yok mu?{" "}
+        Hesabın yok mu?
         <Link to="/register">
           <span> Üye Ol</span>
         </Link>
@@ -41,11 +41,7 @@ function SignPage() {
 
   return (
     <div className="formContainer">
-      <div className="leftSide">
-        <div className="womenImg">
-          <img src={womanPhoto} alt="Photo" />
-        </div>
-      </div>
+      <div className="leftSide"></div>
       <div className="rightSide">
         <div className="rightSideContainer">
           <div className="logo">
@@ -67,4 +63,3 @@ function SignPage() {
 }
 
 export default SignPage;
-
