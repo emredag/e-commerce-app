@@ -2,16 +2,14 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import React, { useContext, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import axios from "axios";
 import { fetchRegister, fetchLogin } from "../../services/Services";
 import { toastError, toastSuccess } from "../../constants/Toastify";
-// import { toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
+import AuthContext from "../../contexts/AuthContext";
+import SetCookie from "../../hooks/setCookie";
+import addTokenHeader from "../../hooks/addTokenHeader";
 
 function Form(props) {
   const { pathname } = useLocation();
-  const [user, setUser] = useState({});
-  const [error, setErorr] = useState(false);
   const navigate = useNavigate();
 
   // *********** Yup Validation ***********
@@ -26,6 +24,8 @@ function Form(props) {
   });
   // **************************************
 
+  const { isLogin, setLogin } = useContext(AuthContext);
+
   return (
     <div className="registerLoginForm">
       <Formik
@@ -34,7 +34,7 @@ function Form(props) {
           password: "",
         }}
         validationSchema={validation}
-        onSubmit={(values, { resetForm, setSubmitting }) => {
+        onSubmit={(values) => {
           {
             pathname === "/register" &&
               fetchRegister({
@@ -43,24 +43,20 @@ function Form(props) {
                 password: values.password,
               })
                 .then((response) => {
-                  //   navigate("/");
-                  //   setUser({
-                  //     email: response.data.user.email,
-                  //     token: response.data.jwt,
-                  //   });
-                  const signature = `Bearer ${response.data.jwt}`;
-                  axios.defaults.headers["Authorization"] = signature;
-                  console.log(response.data);
-                  toastSuccess(
-                    "Kayıt tamamlandı! Anasayfaya yönlendiriliyorsunuz."
-                  );
+                  setLogin(true);
+
+                  SetCookie("authToken", response.data.jwt);
+                  SetCookie("login", true);
+                  SetCookie("userId", response.data.user.id);
+
+                  addTokenHeader();
+
+                  toastSuccess("Kayıt başarılı. Hoşgeldiniz!");
+
+                  navigate("/");
                 })
                 .catch((error) => {
-                  {
-                    error.response.status == "400" &&
-                      toastError("Email kullanılmakta.");
-                  }
-                  console.log(error.response);
+                  toastError("Email kullanılmakta.");
                 });
           }
 
@@ -71,24 +67,20 @@ function Form(props) {
                 password: values.password,
               })
                 .then((response) => {
-                  //   navigate("/");
-                  //   setUser({
-                  //     email: response.data.user.email,
-                  //     token: response.data.jwt,
-                  //   });
-                  const signature = `Bearer ${response.data.jwt}`;
-                  axios.defaults.headers["Authorization"] = signature;
-                  console.log(signature);
-                  console.log(response.data.user.id);
-                  toastSuccess(
-                    "Giriş yapıldı! Anasayfaya yönlendiriliyorsunuz."
-                  );
+                  setLogin(true);
+
+                  SetCookie("authToken", response.data.jwt);
+                  SetCookie("login", true);
+                  SetCookie("userId", response.data.user.id);
+
+                  addTokenHeader();
+
+                  toastSuccess("Giriş başarılı. Hoşgeldiniz!");
+
+                  navigate("/");
                 })
                 .catch((error) => {
-                  {
-                    error.response.status == "400" &&
-                      toastError("Emailinizi veya şifreniz hatalı.");
-                  }
+                  toastError("Emailiniz veya şifreniz hatalı.");
                 });
           }
         }}
