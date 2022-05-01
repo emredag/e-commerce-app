@@ -7,4 +7,5 @@ export const URL = {
   register: "/auth/local/register",
   login: "/auth/local",
   product: "/products",
+  categories: "/categories",
 };

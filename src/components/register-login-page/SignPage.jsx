@@ -1,6 +1,5 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
-import womanPhoto from "../../constants/images/formPageWoman.jpg";
 import logo from "../../constants/icons/logo.svg";
 import Form from "./Form";
 import { Link } from "react-router-dom";

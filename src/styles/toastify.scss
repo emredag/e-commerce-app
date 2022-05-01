@@ -5,10 +5,12 @@
   box-shadow: 0rem 0.3rem 1.2rem $error-toast-shadow;
   border-radius: 0.8rem;
   color: $error-input-border;
+  font-size: 1.5rem;
 }
 .Toastify__toast--success {
   background: rgb(14, 223, 14) 0% 0% no-repeat padding-box;
   box-shadow: 0px 0.3rem 1.2rem $error-toast-shadow;
   border-radius: 0.8rem;
   color: white;
+  font-size: 1.5rem;
 }

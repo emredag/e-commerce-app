@@ -2,7 +2,9 @@
 
 .indexPage {
   background-color: #f2f2f2;
-  // height: 100vh;
+
+  min-height: 100vh;
+  padding-bottom: 15rem;
 }
 .indexContainer {
   margin-left: 22rem;
@@ -13,10 +15,46 @@
     margin-top: 2rem;
   }
 
+  .indexCategories {
+    display: flex;
+    margin-top: 3rem;
+    white-space: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+
+    .categoryCard {
+      display: flex;
+      gap: 3.8rem;
+      border-bottom: 1px solid $stick;
+
+      .categoryName {
+        font: normal normal 600 1.8rem Nunito;
+        color: $input-title-color;
+        cursor: pointer;
+        padding-bottom: 1.5rem;
+      }
+      .categoryName:hover {
+        color: $navbar-btn-color;
+        border-bottom: 2px solid $navbar-btn-color;
+      }
+
+      .activeCategory {
+        color: $navbar-btn-color;
+        border-bottom: 2px solid $navbar-btn-color;
+      }
+    }
+  }
+
+  .indexCategories::-webkit-scrollbar {
+    display: none;
+  }
+
   .indexProducts {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: baseline;
+    flex-flow: wrap;
+    gap: 1.5rem;
     width: 100%;
 
     .productCard {
