@@ -1,0 +1,34 @@
+@import "./color.scss";
+
+/* Loading Start */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.loadingContainer {
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  position: fixed;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.loading {
+  border: 0.8rem solid #f3f3f3;
+  border-top: 0.8rem solid $navbar-btn-color;
+  border-radius: 50%;
+  width: 7.5rem;
+  height: 7.5rem;
+  animation: spin 1s linear infinite;
+}
+.loadingContainer p {
+  color: rgba(255, 255, 255, 0.767);
+  margin-top: 1rem;
+}
+/* Loading Finish */

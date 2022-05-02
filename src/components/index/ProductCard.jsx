@@ -1,18 +1,21 @@
 import React, { useContext, useEffect } from "react";
+import { Link } from "react-router-dom";
 import undifendProduct from "../../constants/images/undifendProduct.jpg";
 import ProductContext from "../../contexts/ProductContext";
 import { baseURL } from "../../services/Axios";
 import { fetchProducts } from "../../services/Services";
 
 function ProductCard() {
-  const { allProduct, currentCategory, setAllProduct } =
+  const { allProduct, currentCategory, setAllProduct, loading, setLoading } =
     useContext(ProductContext);
 
   useEffect(() => {
+    setLoading(true);
     fetchProducts()
       .then((response) => {
         const product = response.data;
         setAllProduct(product);
+        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
@@ -22,16 +25,19 @@ function ProductCard() {
   const product = (item, index) => {
     return (
       <div className="productCard" key={index}>
-        <div className="productImg">
-          <img
-            src={
-              `${item.image}` === "null"
-                ? undifendProduct
-                : `${baseURL}${item?.image?.url}`
-            }
-            alt="Ürün resmi"
-          />
-        </div>
+        <Link to={`product/${item.id}`}>
+          <div className="productImg">
+            <img
+              src={
+                `${item.image}` === "null"
+                  ? undifendProduct
+                  : `${baseURL}${item?.image?.url}`
+              }
+              alt="Ürün resmi"
+            />
+          </div>
+        </Link>
+
         <div className="productInfo">
           <div className="productBrand">
             {item.brand ? item.brand : "Marka Bilinmiyor"}

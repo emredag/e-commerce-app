@@ -1,8 +1,10 @@
 @import url(./reset.css);
 @import url(../pages//Register-Login-Page/formPage.scss);
+@import url(../pages//Product-Detail/productDetail.scss);
 @import url(../pages/Index/index.scss);
 @import url(../components/navbar/navbar.scss);
+@import url(./loading.scss);
 
 html {
-  font-size: 10px;
+  font-size: 10px; // 1rem = 10px
 }

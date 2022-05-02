@@ -1,21 +1,31 @@
 import React, { useContext, useEffect, useState } from "react";
-import banner from "../../constants/images/indexPageBanner.png";
 import ProductContext from "../../contexts/ProductContext";
 import CategoriesCard from "../../components/index/CategoriesCard";
 import ProductCard from "../../components/index/ProductCard";
+import banner from "../../constants/images/indexPageBanner.png";
 
 function IndexPage() {
-  return (
-    <div className="indexPage">
-      <div className="indexContainer">
-        <div className="indexBanner">
-          <img src={banner} alt="Banner" />
-        </div>
+  const { loading } = useContext(ProductContext);
 
-        <CategoriesCard />
-        <ProductCard />
+  return (
+    <>
+      {loading && (
+        <div className="loadingContainer">
+          <span className="loading"></span>
+          <p>Yükleniyor...</p>
+        </div>
+      )}
+      <div className="indexPage">
+        <div className="indexContainer">
+          <div className="indexBanner">
+            <img src={banner} alt="Banner" />
+          </div>
+
+          <CategoriesCard />
+          <ProductCard />
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

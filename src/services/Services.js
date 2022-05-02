@@ -15,6 +15,11 @@ export const fetchProducts = async () => {
   return data;
 };
 
+export const fetchOneProduct = async (productId) => {
+  const data = await axios.get(`${URL.product}/${productId}`);
+  return data;
+};
+
 export const fetchCategories = () => {
   const data = axios.get(URL.categories);
   return data;

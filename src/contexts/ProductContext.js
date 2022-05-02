@@ -7,7 +7,8 @@ export const ProductProvider = ({ children }) => {
   const [allProduct, setAllProduct] = useState([]);
   const [allCategories, setAllCategories] = useState([]);
   const [currentCategory, setCurrentCategory] = useState(0);
-  let [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [loading, setLoading] = useState(false);
 
   const values = {
     allProduct,
@@ -18,6 +19,8 @@ export const ProductProvider = ({ children }) => {
     setCurrentCategory,
     searchParams,
     setSearchParams,
+    loading,
+    setLoading,
   };
 
   return (

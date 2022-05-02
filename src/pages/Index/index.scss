@@ -1,7 +1,7 @@
 @import "../../styles/color.scss";
 
 .indexPage {
-  background-color: #f2f2f2;
+  background-color: $pages-bg-color;
 
   min-height: 100vh;
   padding-bottom: 15rem;
@@ -23,7 +23,7 @@
       display: flex;
       gap: 3.8rem;
       border-bottom: 1px solid $stick;
-      overflow-x: scroll;
+      overflow: scroll;
 
       .categoryName {
         font: normal normal 600 1.8rem Nunito;
