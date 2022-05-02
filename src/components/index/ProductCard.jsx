@@ -48,9 +48,9 @@ function ProductCard() {
   return (
     <div className="indexProducts">
       {allProduct.map((item, index) => {
-        if (currentCategory === item.category?.id) {
+        if (currentCategory == item.category?.id) {
           return product(item, index);
-        } else if (currentCategory === 0) {
+        } else if (currentCategory == 0) {
           return product(item, index);
         }
       })}

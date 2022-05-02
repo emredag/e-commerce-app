@@ -1,4 +1,6 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useRef } from "react";
+import { useLocation, useSearchParams } from "react-router-dom";
+import useDraggableScroll from "use-draggable-scroll";
 import ProductContext from "../../contexts/ProductContext";
 import { fetchCategories } from "../../services/Services";
 
@@ -8,6 +10,8 @@ function CategoriesCard() {
     currentCategory,
     setCurrentCategory,
     setAllCategories,
+    searchParams,
+    setSearchParams,
   } = useContext(ProductContext);
 
   useEffect(() => {
@@ -21,23 +25,30 @@ function CategoriesCard() {
       });
   }, []);
 
+  useEffect(() => {
+    const queryParams = new URLSearchParams(window.location.search);
+    const term = queryParams.get("catagoryId");
+    setCurrentCategory(term ? term : 0);
+  }, [searchParams]);
+
+  const ref = useRef();
+  const { onMouseDown } = useDraggableScroll(ref);
+
   return (
     <div className="indexCategories">
-      <div className="categoryCard">
+      <div ref={ref} onMouseDown={onMouseDown} className="categoryCard">
         <div
-          onClick={() => setCurrentCategory(0)}
-          className={`categoryName ${
-            currentCategory === 0 && "activeCategory"
-          }`}
+          onClick={() => setSearchParams({ ["catagoryId"]: 0 })}
+          className={`categoryName ${currentCategory == 0 && "activeCategory"}`}
         >
           Hepsi
         </div>
         {allCategories.map((item, index) => {
           return (
             <div
-              onClick={() => setCurrentCategory(item.id)}
+              onClick={() => setSearchParams({ ["catagoryId"]: item.id })}
               className={`categoryName ${
-                currentCategory === item.id && "activeCategory"
+                currentCategory == item.id && "activeCategory"
               }`}
               key={index}
             >
