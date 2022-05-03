@@ -10,7 +10,6 @@ import ProductDetailPage from "../pages/Product-Detail/ProductDetailPage";
 
 function Router() {
   const { isLogin } = useContext(AuthContext);
-  const { productId, setProductId } = useContext(ProductContext);
 
   return (
     <div>

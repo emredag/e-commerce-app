@@ -18,21 +18,20 @@
 
   .detailLeftSide {
     width: 50%;
-    // background-color: red;
+
     .detailImage {
       img {
         width: 70rem;
         height: 73.7rem;
         border-radius: 0.8rem;
         margin: 1.5rem;
-        object-fit: cover;
+        object-fit: contain;
       }
     }
   }
 
   .detailRightSide {
     width: 50%;
-    // background-color: yellow;
 
     .rightSideContainer {
       margin-top: 3rem;
@@ -44,10 +43,31 @@
       .detailInfo {
         font-size: 1.5rem;
         color: $input-title-color;
-        div {
-          span {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        margin-top: 2.5rem;
+        .detailBox {
+          display: inline-flex;
+          .detailBoxTitle {
+            width: 14rem;
             font-weight: bold;
           }
+        }
+      }
+      .detailPrice {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-top: 3rem;
+      }
+      .detailDesc {
+        font-size: 1.5rem;
+        color: $detail-title;
+        .descTitle {
+          font-size: 1.8rem;
+          font-weight: bold;
+          color: $input-title-color;
+          margin-bottom: 1rem;
         }
       }
     }

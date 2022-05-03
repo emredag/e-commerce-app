@@ -11,6 +11,7 @@ import addTokenHeader from "../../hooks/addTokenHeader";
 function Form(props) {
   const { pathname } = useLocation();
   const navigate = useNavigate();
+  const { setLogin } = useContext(AuthContext);
 
   // *********** Yup Validation ***********
   const validation = Yup.object({
@@ -23,8 +24,6 @@ function Form(props) {
       .max(20, "max 20 knk"),
   });
   // **************************************
-
-  const { isLogin, setLogin } = useContext(AuthContext);
 
   return (
     <div className="registerLoginForm">

@@ -15,11 +15,11 @@ function ProductCard() {
       .then((response) => {
         const product = response.data;
         setAllProduct(product);
-        setLoading(false);
       })
       .catch((error) => {
         console.log(error);
-      });
+      })
+      .finally(setLoading(false));
   }, []);
 
   const product = (item, index) => {

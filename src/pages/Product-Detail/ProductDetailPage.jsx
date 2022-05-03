@@ -4,55 +4,26 @@ import ProductDetail from "../../components/product-detail/ProductDetail";
 import OneProductContext from "../../contexts/OneProductContext";
 import { fetchOneProduct } from "../../services/Services";
 import notFound from "../../constants/images/notFound.png";
+import LoadingSpinner from "../../components/global/LoadingSpinner";
 
 function ProductDetailPage() {
-  const { productId } = useParams();
-
-  const {
-    oneProduct,
-    setOneProduct,
-    currentProduct,
-    setCurrentProduct,
-    loading,
-    setLoading,
-  } = useContext(OneProductContext);
-
-  useEffect(() => {
-    setLoading(true);
-    fetchOneProduct(productId)
-      .then((response) => {
-        setOneProduct(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  useEffect(() => {
-    setCurrentProduct(productId);
-  }, []);
+  const { oneProduct, loading, setLoading } =
+    useContext(OneProductContext);
 
   return (
     <>
-      {loading && (
-        <div className="loadingContainer">
-          <span className="loading"></span>
-          <p>Yükleniyor...</p>
-        </div>
-      )}
+      {loading && <LoadingSpinner />}
       <div>
-        {[oneProduct].map((item, index) => {
-          if (currentProduct == item.id) {
-            return <ProductDetail item={item} index={index} />;
-          } else {
-            return (
-              <div className="notFoundProduct">
-                <img src={notFound} alt="Ürün Bulunamadı" />
-              </div>
-            );
-          }
-        })}
+        {oneProduct ? (
+          <ProductDetail />
+        ) : (
+          <>
+            {setLoading(false)}
+            <div className="notFoundProduct">
+              <img src={notFound} alt="Ürün Bulunamadı" />
+            </div>
+          </>
+        )}
       </div>
     </>
   );

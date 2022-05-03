@@ -3,18 +3,14 @@ import ProductContext from "../../contexts/ProductContext";
 import CategoriesCard from "../../components/index/CategoriesCard";
 import ProductCard from "../../components/index/ProductCard";
 import banner from "../../constants/images/indexPageBanner.png";
+import LoadingSpinner from "../../components/global/LoadingSpinner";
 
 function IndexPage() {
   const { loading } = useContext(ProductContext);
 
   return (
     <>
-      {loading && (
-        <div className="loadingContainer">
-          <span className="loading"></span>
-          <p>Yükleniyor...</p>
-        </div>
-      )}
+      {loading && <LoadingSpinner />}
       <div className="indexPage">
         <div className="indexContainer">
           <div className="indexBanner">
@@ -22,6 +18,7 @@ function IndexPage() {
           </div>
 
           <CategoriesCard />
+
           <ProductCard />
         </div>
       </div>

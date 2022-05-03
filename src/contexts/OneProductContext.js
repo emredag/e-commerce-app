@@ -4,7 +4,7 @@ import { useSearchParams } from "react-router-dom";
 const OneProductContext = createContext();
 
 export const OneProductProvider = ({ children }) => {
-  const [oneProduct, setOneProduct] = useState([]);
+  const [oneProduct, setOneProduct] = useState({});
   const [currentProduct, setCurrentProduct] = useState();
   const [loading, setLoading] = useState(false);
 

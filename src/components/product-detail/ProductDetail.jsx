@@ -1,13 +1,41 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import { baseURL } from "../../services/Axios";
 import undifendProduct from "../../constants/images/undifendProduct.jpg";
+import { useParams } from "react-router-dom";
+import OneProductContext from "../../contexts/OneProductContext";
+import { fetchOneProduct } from "../../services/Services";
 
-function ProductDetail(props) {
-  const item = props.item;
-  const key = props.index;
+function ProductDetail() {
+  const { productId } = useParams();
+
+  const {
+    oneProduct,
+    setOneProduct,
+    setLoading,
+
+    setCurrentProduct,
+  } = useContext(OneProductContext);
+
+  useEffect(() => {
+    setLoading(true);
+    fetchOneProduct(productId)
+      .then((response) => {
+        setOneProduct(response.data);
+      })
+      .catch((error) => {
+        setOneProduct();
+      })
+      .finally(setLoading(false));
+  }, []);
+
+  const item = oneProduct;
+
+  useEffect(() => {
+    setCurrentProduct(productId);
+  }, [productId]);
 
   return (
-    <div className="productDetailPage" key={key}>
+    <div className="productDetailPage">
       <div className="productDetailContainer">
         <div className="detailLeftSide">
           <div className="detailImage">
@@ -27,22 +55,25 @@ function ProductDetail(props) {
             <div className="detailTitle">{item.name}</div>
 
             <div className="detailInfo">
-              <div>
-                <span>Marka:</span> {item.brand}
+              <div className="detailBox">
+                <div className="detailBoxTitle">Marka:</div>
+                {item.brand ? item.brand : "Bilinmiyor"}
               </div>
-              <div>
-                <span>Renk:</span> {item.color}
+              <div className="detailBox">
+                <div className="detailBoxTitle">Renk:</div>
+                {item.color ? item.color : "Bilinmiyor"}
               </div>
-              <div>
-                <span>Kullanım Durumu:</span> {item.status}
+              <div className="detailBox">
+                <div className="detailBoxTitle">Kullanım Durumu:</div>
+                {item.status ? item.status : "Bilinmiyor"}
               </div>
             </div>
 
             <div className="detailPrice">{item.price} TL</div>
 
             <div className="detailDesc">
-              <span>Açıklama</span> <br />
-              {item.description}
+              <div className="descTitle">Açıklama</div>
+              {item.description ? item.description : "Açıklama bulunmamakta."}
             </div>
           </div>
         </div>
