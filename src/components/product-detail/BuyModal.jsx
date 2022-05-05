@@ -9,11 +9,13 @@ import {
   fetchOneProduct,
   fetchProducts,
 } from "../../services/Services";
+import LoadingSpinner from "../global/LoadingSpinner";
 
 export default function BuyModal({ open, onClose, productId }) {
-  const { setOneProduct } = useContext(OneProductContext);
+  const { setOneProduct, loading, setLoading } = useContext(OneProductContext);
 
   const buyClick = () => {
+    setLoading(true);
     fetchBuyProduct(productId, { isOfferable: false, isSold: true })
       .then(() => {
         onClose(false);
@@ -30,6 +32,9 @@ export default function BuyModal({ open, onClose, productId }) {
       })
       .catch((error) => {
         toastError("Giriş Yapmalısınız!");
+      })
+      .finally(() => {
+        setLoading(false);
       });
   };
 
@@ -40,31 +45,35 @@ export default function BuyModal({ open, onClose, productId }) {
   if (!open) return null;
 
   return ReactDom.createPortal(
-    <>
-      <div className="buy-overlay" />
-      <div className="buy-modals">
-        <div className="buyTitle">
-          <span>Satın Al</span>
-          Satın almak istiyor musunuz?
-        </div>
-
-        <div className="buyButtons">
-          <div className="closeBuy" onClick={onClose}>
-            Vazgeç
+    loading ? (
+      <LoadingSpinner />
+    ) : (
+      <>
+        <div className="buy-overlay" />
+        <div className="buy-modals">
+          <div className="buyTitle">
+            <span>Satın Al</span>
+            Satın almak istiyor musunuz?
           </div>
 
-          <Link className="buyProduct" to={!isLogin && "/register"}>
-            <div
-              onClick={() => {
-                buyClick();
-              }}
-            >
-              Satın Al
+          <div className="buyButtons">
+            <div className="closeBuy" onClick={onClose}>
+              Vazgeç
             </div>
-          </Link>
+
+            <Link className="buyProduct" to={!isLogin && "/register"}>
+              <div
+                onClick={() => {
+                  buyClick();
+                }}
+              >
+                Satın Al
+              </div>
+            </Link>
+          </div>
         </div>
-      </div>
-    </>,
+      </>
+    ),
     document.getElementById("portal")
   );
 }

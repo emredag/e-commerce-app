@@ -44,3 +44,8 @@ export const fetchSendOffer = async (input) => {
   const data = await axios.post(`${baseURL}/${URL.offer}`, input);
   return data;
 };
+
+export const fetchDeletOffer = async (offerId) => {
+  const data = await axios.delete(`${baseURL}/${URL.offer}/${offerId}`);
+  return data;
+};

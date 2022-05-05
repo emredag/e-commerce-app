@@ -16,14 +16,14 @@ function Router() {
       <Routes>
         <Route path="/" element={<IndexPage />} />
         <Route
-          path="register"
+          path="/register"
           element={isLogin ? <Navigate replace to="/" /> : <RegisterPage />}
         />
         <Route
-          path="login"
+          path="/login"
           element={isLogin ? <Navigate replace to="/" /> : <LoginPage />}
         />
-        <Route path="product/:productId" element={<ProductDetailPage />} />
+        <Route path="/product/:productId" element={<ProductDetailPage />} />
       </Routes>
     </div>
   );

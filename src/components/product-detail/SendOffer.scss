@@ -21,8 +21,8 @@
   }
 
   button:hover {
-    color: white;
-    background-color: $navbar-btn-color;
+    background-color: $product-button-hover;
+    transition: 0.3s;
   }
 }
 

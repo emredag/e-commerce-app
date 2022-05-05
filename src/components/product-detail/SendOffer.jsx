@@ -9,14 +9,13 @@ import closeModal from "../../constants/icons/close.png";
 
 import {
   baseURL,
-  fetchBuyProduct,
   fetchOneProduct,
-  fetchProducts,
   fetchSendOffer,
 } from "../../services/Services";
+import LoadingSpinner from "../global/LoadingSpinner";
 
 export default function SendOffer({ open, onClose, productId }) {
-  const { oneProduct, setOneProduct, isSentOffer, setIsSentOffer } =
+  const { oneProduct, setOneProduct, setOffers, loading, setLoading } =
     useContext(OneProductContext);
   const isLogin = GetCookie("login");
 
@@ -37,6 +36,8 @@ export default function SendOffer({ open, onClose, productId }) {
             users_permissions_user: "",
           }}
           onSubmit={(values) => {
+            setLoading(true);
+
             Number(values.perCent)
               ? fetchSendOffer({
                   product: oneProduct.id.toString(),
@@ -49,7 +50,7 @@ export default function SendOffer({ open, onClose, productId }) {
                     fetchOneProduct(productId)
                       .then((response) => {
                         setOneProduct(response.data);
-                        setIsSentOffer(true);
+                        setOffers(response.data.offers);
                       })
                       .catch((error) => {
                         console.log(error);
@@ -60,99 +61,106 @@ export default function SendOffer({ open, onClose, productId }) {
                   .catch((error) => {
                     console.log(error);
                   })
+                  .finally(() => {
+                    setLoading(false);
+                  })
               : toastError("Geçerli bir teklif belirleyiniz");
           }}
         >
-          {({ values, handleChange }) => (
-            <div className="sendOffer">
-              <div className="offerTitle">
-                <div className="title">Teklif Ver</div>
-                <div className="closeOffer" onClick={onClose}>
-                  <img src={closeModal} alt="Kapat" />
+          {({ values, handleChange }) =>
+            loading ? (
+              <LoadingSpinner />
+            ) : (
+              <div className="sendOffer">
+                <div className="offerTitle">
+                  <div className="title">Teklif Ver</div>
+                  <div className="closeOffer" onClick={onClose}>
+                    <img src={closeModal} alt="Kapat" />
+                  </div>
                 </div>
-              </div>
 
-              <div className="sendOfferProduct">
-                <div className="offerImg">
-                  <img
-                    src={
-                      `${oneProduct.image}` === "null"
-                        ? undifendProduct
-                        : `${baseURL}${oneProduct?.image?.url}`
-                    }
-                    alt="Ürün resmi"
-                  />
-                  <div className="productName">{oneProduct.name}</div>
+                <div className="sendOfferProduct">
+                  <div className="offerImg">
+                    <img
+                      src={
+                        `${oneProduct.image}` === "null"
+                          ? undifendProduct
+                          : `${baseURL}${oneProduct?.image?.url}`
+                      }
+                      alt="Ürün resmi"
+                    />
+                    <div className="productName">{oneProduct.name}</div>
+                  </div>
+                  <div className="productPrice">{oneProduct.price} TL</div>
                 </div>
-                <div className="productPrice">{oneProduct.price} TL</div>
+
+                <Form className="sendOfferForm">
+                  <label
+                    className={`perCentDefaults ${
+                      Number(values.perCent) === oneProduct.price * 0.2 &&
+                      "activeRadio"
+                    } `}
+                  >
+                    <Field
+                      type="radio"
+                      name="perCent"
+                      value={`${oneProduct.price * 0.2}`}
+                      onChange={handleChange}
+                      onClick={clearInput}
+                    />
+                    %20’si Kadar Teklif Ver
+                  </label>
+                  <label
+                    className={`perCentDefaults ${
+                      Number(values.perCent) === oneProduct.price * 0.3 &&
+                      "activeRadio"
+                    } `}
+                  >
+                    <Field
+                      type="radio"
+                      name="perCent"
+                      value={`${oneProduct.price * 0.3}`}
+                      onChange={handleChange}
+                      onClick={clearInput}
+                    />
+                    %30’u Kadar Teklif Ver
+                  </label>
+                  <label
+                    className={`perCentDefaults ${
+                      Number(values.perCent) === oneProduct.price * 0.4 &&
+                      "activeRadio"
+                    } `}
+                  >
+                    <Field
+                      type="radio"
+                      name="perCent"
+                      value={`${oneProduct.price * 0.4}`}
+                      onChange={handleChange}
+                      onClick={clearInput}
+                    />
+                    %40'ı Kadar Teklif Ver
+                  </label>
+
+                  <label className="perCentCustom">
+                    <Field
+                      name="perCent"
+                      type="number"
+                      id="customPrice"
+                      value={values.price}
+                      onChange={handleChange}
+                      min="1"
+                      placeholder="Teklif Belirle"
+                    />
+                  </label>
+                  <button className="offerSubmitBtn" type="submit">
+                    {values.perCent
+                      ? `${values.perCent} TL Onayla`
+                      : "Teklif Verininiz"}
+                  </button>
+                </Form>
               </div>
-
-              <Form className="sendOfferForm">
-                <label
-                  className={`perCentDefaults ${
-                    Number(values.perCent) === oneProduct.price * 0.2 &&
-                    "activeRadio"
-                  } `}
-                >
-                  <Field
-                    type="radio"
-                    name="perCent"
-                    value={`${oneProduct.price * 0.2}`}
-                    onChange={handleChange}
-                    onClick={clearInput}
-                  />
-                  %20’si Kadar Teklif Ver
-                </label>
-                <label
-                  className={`perCentDefaults ${
-                    Number(values.perCent) === oneProduct.price * 0.3 &&
-                    "activeRadio"
-                  } `}
-                >
-                  <Field
-                    type="radio"
-                    name="perCent"
-                    value={`${oneProduct.price * 0.3}`}
-                    onChange={handleChange}
-                    onClick={clearInput}
-                  />
-                  %30’u Kadar Teklif Ver
-                </label>
-                <label
-                  className={`perCentDefaults ${
-                    Number(values.perCent) === oneProduct.price * 0.4 &&
-                    "activeRadio"
-                  } `}
-                >
-                  <Field
-                    type="radio"
-                    name="perCent"
-                    value={`${oneProduct.price * 0.4}`}
-                    onChange={handleChange}
-                    onClick={clearInput}
-                  />
-                  %40'ı Kadar Teklif Ver
-                </label>
-
-                <label className="perCentCustom">
-                  <Field
-                    name="perCent"
-                    type="number"
-                    id="customPrice"
-                    value={values.price}
-                    onChange={handleChange}
-                    min="1"
-                    placeholder="Teklif Belirle"
-                  />
-                </label>
-                <button className="offerSubmitBtn" type="submit">
-                  {values.perCent
-                    ? `${values.perCent} TL Onayla`
-                    : "Teklif Verininiz"}
-                </button>
-              </Form>
-            </div>
-          )}
+            )
+          }
         </Formik>
       </div>
     </>,

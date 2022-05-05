@@ -36,8 +36,8 @@
     font-weight: bold;
   }
   button:hover {
-    color: $navbar-btn-color;
-    background-color: $navbar-btn-bg-color;
+    background-color: $product-button-hover;
+    transition: 0.3s;
   }
 }
 

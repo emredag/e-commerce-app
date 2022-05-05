@@ -1,10 +1,16 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import OneProductContext from "../../contexts/OneProductContext";
-import { fetchOneProduct, baseURL } from "../../services/Services";
+import {
+  fetchOneProduct,
+  baseURL,
+  fetchDeletOffer,
+} from "../../services/Services";
 import BuyModal from "./BuyModal";
 import SendOffer from "./SendOffer";
 import undifendProduct from "../../constants/images/undifendProduct.jpg";
+import GetCookie from "../../hooks/getCookie";
+import { toastSuccess } from "../../constants/Toastify";
 
 function ProductDetail() {
   const { productId } = useParams();
@@ -16,8 +22,8 @@ function ProductDetail() {
     setOneProduct,
     setLoading,
     setCurrentProduct,
-    isSentOffer,
-    setIsSentOffer,
+    offers,
+    setOffers,
   } = useContext(OneProductContext);
 
   useEffect(() => {
@@ -25,10 +31,13 @@ function ProductDetail() {
     fetchOneProduct(productId)
       .then((response) => {
         setOneProduct(response.data);
-        setLoading(false);
+        setOffers(response.data.offers);
       })
       .catch((error) => {
         setOneProduct();
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, []);
 
@@ -37,6 +46,32 @@ function ProductDetail() {
   useEffect(() => {
     setCurrentProduct(productId);
   }, [productId]);
+
+  let givenOffer;
+
+  offers.map((item) => {
+    if (item.users_permissions_user === Number(GetCookie("userId"))) {
+      givenOffer = item;
+    } else {
+      return null;
+    }
+  });
+
+  const deleteOffer = () => {
+    fetchDeletOffer(givenOffer.id).then((response) => {
+      fetchOneProduct(productId)
+        .then((response) => {
+          setOneProduct(response.data);
+          setOffers(response.data.offers);
+          setLoading(false);
+        })
+        .catch((error) => {
+          setOneProduct();
+        });
+      console.log(response);
+      toastSuccess("Teklif Geri Çekildi");
+    });
+  };
 
   return (
     <div className="productDetailPage">
@@ -77,6 +112,12 @@ function ProductDetail() {
               {item.price ? item.price : "Bilinmiyor"} TL
             </div>
 
+            {givenOffer && (
+              <div className="givenOffer">
+                <span>Verilen Teklif:</span> {givenOffer.offerPrice} TL
+              </div>
+            )}
+
             <div className="detailBtn">
               {!item.isSold && (
                 <div className="buyModalBtn">
@@ -95,7 +136,7 @@ function ProductDetail() {
                 </div>
               )}
 
-              {item.isOfferable && !isSentOffer ? (
+              {item.isOfferable && !givenOffer && !item.isSold && (
                 <div className="sendOfferBtn">
                   <button
                     className="btn btn-primary"
@@ -110,9 +151,13 @@ function ProductDetail() {
                     productId={productId}
                   ></SendOffer>
                 </div>
-              ) : (
+              )}
+
+              {givenOffer && (
                 <div className="sendOfferBtn">
-                  <button className="btn ">Teklifi Geri Çek</button>
+                  <button className="btn btn-primary" onClick={deleteOffer}>
+                    Teklifi Geri Çek
+                  </button>
                 </div>
               )}
 
