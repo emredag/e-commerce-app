@@ -60,9 +60,16 @@
         font-weight: bold;
         margin-top: 3rem;
       }
+
+      .detailBtn {
+        display: flex;
+        gap: 1rem;
+      }
+
       .detailDesc {
         font-size: 1.5rem;
         color: $detail-title;
+        margin-top: 3rem;
         .descTitle {
           font-size: 1.8rem;
           font-weight: bold;

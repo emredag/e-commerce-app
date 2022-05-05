@@ -2,8 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import undifendProduct from "../../constants/images/undifendProduct.jpg";
 import ProductContext from "../../contexts/ProductContext";
-import { baseURL } from "../../services/Axios";
-import { fetchProducts } from "../../services/Services";
+import { fetchProducts, baseURL } from "../../services/Services";
 
 function ProductCard() {
   const { allProduct, currentCategory, setAllProduct, loading, setLoading } =
@@ -15,11 +14,12 @@ function ProductCard() {
       .then((response) => {
         const product = response.data;
         setAllProduct(product);
+        setLoading(false);
+        console.log(product);
       })
       .catch((error) => {
         console.log(error);
-      })
-      .finally(setLoading(false));
+      });
   }, []);
 
   const product = (item, index) => {

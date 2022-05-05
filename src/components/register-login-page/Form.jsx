@@ -1,29 +1,25 @@
 import { Formik } from "formik";
 import * as Yup from "yup";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { fetchRegister, fetchLogin } from "../../services/Services";
 import { toastError, toastSuccess } from "../../constants/Toastify";
 import AuthContext from "../../contexts/AuthContext";
 import SetCookie from "../../hooks/setCookie";
-import addTokenHeader from "../../hooks/addTokenHeader";
 
 function Form(props) {
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const { setLogin } = useContext(AuthContext);
+  const { isLogin, setLogin } = useContext(AuthContext);
 
   // *********** Yup Validation ***********
   const validation = Yup.object({
-    email: Yup.string()
-      .email("Geçerli bir mail adresi giriniz.")
-      .required("Eposta alanı zorunludur."),
-    password: Yup.string()
-      .required("Şifre alanı boş bırakılamaz.")
-      .min(8, "Minimum 8 karakter.")
-      .max(20, "max 20 knk"),
+    email: Yup.string().email().required(),
+    password: Yup.string().required().min(8).max(20),
   });
   // **************************************
+
+  // const backPage = navigate(-1 == undefined ? "/" : -1);
 
   return (
     <div className="registerLoginForm">
@@ -48,8 +44,6 @@ function Form(props) {
                   SetCookie("login", true);
                   SetCookie("userId", response.data.user.id);
 
-                  addTokenHeader();
-
                   toastSuccess("Kayıt başarılı. Hoşgeldiniz!");
 
                   navigate("/");
@@ -72,10 +66,7 @@ function Form(props) {
                   SetCookie("login", true);
                   SetCookie("userId", response.data.user.id);
 
-                  addTokenHeader();
-
                   toastSuccess("Giriş başarılı. Hoşgeldiniz!");
-
                   navigate("/");
                 })
                 .catch((error) => {

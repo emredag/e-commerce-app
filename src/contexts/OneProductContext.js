@@ -1,5 +1,4 @@
 import { createContext, useState } from "react";
-import { useSearchParams } from "react-router-dom";
 
 const OneProductContext = createContext();
 
@@ -7,6 +6,7 @@ export const OneProductProvider = ({ children }) => {
   const [oneProduct, setOneProduct] = useState({});
   const [currentProduct, setCurrentProduct] = useState();
   const [loading, setLoading] = useState(false);
+  const [isSentOffer, setIsSentOffer] = useState(false);
 
   const values = {
     oneProduct,
@@ -15,6 +15,8 @@ export const OneProductProvider = ({ children }) => {
     setCurrentProduct,
     loading,
     setLoading,
+    isSentOffer,
+    setIsSentOffer,
   };
 
   return (

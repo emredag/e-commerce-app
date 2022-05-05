@@ -5,7 +5,6 @@ import IndexPage from "../pages/Index/IndexPage";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import AuthContext from "../contexts/AuthContext";
-import ProductContext from "../contexts/ProductContext";
 import ProductDetailPage from "../pages/Product-Detail/ProductDetailPage";
 
 function Router() {

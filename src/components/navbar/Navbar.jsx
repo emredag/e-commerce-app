@@ -18,6 +18,7 @@ function Navbar() {
     RemoveCookie("userId");
     RemoveCookie("login");
     toastSuccess("Çıkış yapıldı.");
+    window.location.reload();
   };
 
   return (

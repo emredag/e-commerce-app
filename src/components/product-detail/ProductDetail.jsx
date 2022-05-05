@@ -1,19 +1,23 @@
-import React, { useContext, useEffect } from "react";
-import { baseURL } from "../../services/Axios";
-import undifendProduct from "../../constants/images/undifendProduct.jpg";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import OneProductContext from "../../contexts/OneProductContext";
-import { fetchOneProduct } from "../../services/Services";
+import { fetchOneProduct, baseURL } from "../../services/Services";
+import BuyModal from "./BuyModal";
+import SendOffer from "./SendOffer";
+import undifendProduct from "../../constants/images/undifendProduct.jpg";
 
 function ProductDetail() {
   const { productId } = useParams();
+  const [buyOpen, setBuyOpen] = useState(false);
+  const [offerOpen, setOfferOpen] = useState(false);
 
   const {
     oneProduct,
     setOneProduct,
     setLoading,
-
     setCurrentProduct,
+    isSentOffer,
+    setIsSentOffer,
   } = useContext(OneProductContext);
 
   useEffect(() => {
@@ -21,11 +25,11 @@ function ProductDetail() {
     fetchOneProduct(productId)
       .then((response) => {
         setOneProduct(response.data);
+        setLoading(false);
       })
       .catch((error) => {
         setOneProduct();
-      })
-      .finally(setLoading(false));
+      });
   }, []);
 
   const item = oneProduct;
@@ -69,7 +73,57 @@ function ProductDetail() {
               </div>
             </div>
 
-            <div className="detailPrice">{item.price} TL</div>
+            <div className="detailPrice">
+              {item.price ? item.price : "Bilinmiyor"} TL
+            </div>
+
+            <div className="detailBtn">
+              {!item.isSold && (
+                <div className="buyModalBtn">
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => setBuyOpen(true)}
+                  >
+                    Satın Al
+                  </button>
+
+                  <BuyModal
+                    open={buyOpen}
+                    onClose={() => setBuyOpen(false)}
+                    productId={productId}
+                  ></BuyModal>
+                </div>
+              )}
+
+              {item.isOfferable && !isSentOffer ? (
+                <div className="sendOfferBtn">
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => setOfferOpen(true)}
+                  >
+                    Teklif Ver
+                  </button>
+
+                  <SendOffer
+                    open={offerOpen}
+                    onClose={() => setOfferOpen(false)}
+                    productId={productId}
+                  ></SendOffer>
+                </div>
+              ) : (
+                <div className="sendOfferBtn">
+                  <button className="btn ">Teklifi Geri Çek</button>
+                </div>
+              )}
+
+              {item.isSold && (
+                <div className="soldProduct">Bu Ürün Satışta Değil</div>
+              )}
+
+              {!item.isOfferable && !item.isSold && (
+                <div className="soldProduct">Teklif Kabul Edilmiyor</div>
+              )}
+            </div>
 
             <div className="detailDesc">
               <div className="descTitle">Açıklama</div>

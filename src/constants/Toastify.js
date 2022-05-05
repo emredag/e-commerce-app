@@ -24,3 +24,15 @@ export const toastSuccess = (message) => {
     transition: Flip,
   });
 };
+
+export const toastBuySuccess = (message) => {
+  return toast.success(message, {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: true,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: false,
+    transition: Flip,
+  });
+};

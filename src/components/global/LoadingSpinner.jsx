@@ -3,7 +3,7 @@ import React from "react";
 function LoadingSpinner() {
   return (
     <div className="loadingContainer">
-      <span className="loading"></span>
+      <div className="rainbow"></div>
       <p>Yükleniyor...</p>
     </div>
   );

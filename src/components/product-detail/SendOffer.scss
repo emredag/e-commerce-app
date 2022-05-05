@@ -1,0 +1,185 @@
+@import "../../styles/color.scss";
+
+.sendOfferBtn {
+  position: relative;
+  z-index: 1;
+  margin-top: 3rem;
+
+  button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 23.5rem;
+    height: 4.5rem;
+    background-color: $navbar-btn-bg-color;
+    border-radius: 0.8rem;
+    color: $navbar-btn-color;
+    font-size: 1.8rem;
+    border: none;
+    font-weight: bold;
+  }
+
+  button:hover {
+    color: white;
+    background-color: $navbar-btn-color;
+  }
+}
+
+.offer-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $navbar-btn-color;
+  opacity: 0.7;
+  z-index: 1000;
+}
+
+.offer-modals {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 48rem;
+  height: 46.1rem;
+  transform: translate((-50%, -50%));
+  background-color: $navbar-bg-color;
+  padding: 2.2rem;
+  z-index: 1000;
+  box-shadow: 0rem 0.3rem 1.2rem $toast-shadow-bg;
+  border-radius: 0.8rem;
+}
+
+.sendOffer {
+  // display: flex;
+  // flex-direction: column;
+  .offerTitle {
+    display: flex;
+    justify-content: space-between;
+    .title {
+      font-size: 2.5rem;
+      font-weight: bold;
+    }
+    .closeOffer {
+      cursor: pointer;
+    }
+  }
+
+  .sendOfferProduct {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 44.1rem;
+    height: 6rem;
+    background-color: $navbar-btn-bg-color;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin-top: 1.7rem;
+    .offerImg {
+      display: flex;
+      align-items: center;
+      img {
+        width: 5rem;
+        height: 5rem;
+        border-radius: 0.8rem;
+        object-fit: cover;
+      }
+
+      .productName {
+        font-size: 1.3rem;
+        color: $detail-title;
+        margin-left: 0.7rem;
+      }
+    }
+    .productPrice {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: $input-title-color;
+    }
+  }
+
+  .sendOfferForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.5rem;
+    gap: 1.5rem;
+    margin-top: 2rem;
+    color: $input-title-color;
+    .perCentDefaults {
+      width: 44.1rem;
+      height: 4.5rem;
+      border: 1px solid $stick;
+      border-radius: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      cursor: pointer;
+      gap: 0.7rem;
+      padding: 1rem;
+      font-size: 1.5rem;
+    }
+    .perCentCustom {
+      input {
+        width: 44.1rem;
+        height: 4.5rem;
+        background-color: $input-bg-color;
+        border-radius: 0.8rem;
+        border: none;
+        padding: 1.5rem;
+      }
+      input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+      }
+    }
+
+    .offerSubmitBtn {
+      width: 31.5rem;
+      height: 4.5rem;
+      background-color: $navbar-btn-color;
+      border-radius: 0.8rem;
+    }
+  }
+}
+
+.activeRadio {
+  color: $navbar-btn-color;
+  background-color: $navbar-btn-bg-color;
+  border: 1px solid $navbar-btn-color;
+  input[type="radio"] {
+  }
+}
+
+input[type="radio"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+
+  border: 0.15rem solid $offer-radio-btn;
+  border-radius: 50%;
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"]::before {
+  content: "";
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 50%;
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+
+  /* Windows High Contrast Mode */
+  background-color: #4b9ce2;
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+
+input[type="radio"]:focus {
+  outline: max(1px, 0.15em) solid #4b9ce2;
+  outline-offset: max(1px, 0.15em);
+}

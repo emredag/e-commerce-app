@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import ProductContext from "../../contexts/ProductContext";
 import CategoriesCard from "../../components/index/CategoriesCard";
 import ProductCard from "../../components/index/ProductCard";
-import banner from "../../constants/images/indexPageBanner.png";
+// import banner from "../../constants/images/indexPageBanner.png";
 import LoadingSpinner from "../../components/global/LoadingSpinner";
 
 function IndexPage() {
@@ -14,7 +14,7 @@ function IndexPage() {
       <div className="indexPage">
         <div className="indexContainer">
           <div className="indexBanner">
-            <img src={banner} alt="Banner" />
+            <img src="https://i.hizliresim.com/2ywnoxp.png" alt="Banner" />
           </div>
 
           <CategoriesCard />

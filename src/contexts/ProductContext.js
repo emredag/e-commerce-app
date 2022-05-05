@@ -1,4 +1,4 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
 const ProductContext = createContext();
