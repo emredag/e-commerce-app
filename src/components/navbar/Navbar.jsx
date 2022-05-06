@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import Logo from "../../constants/icons/logo.svg";
 import { Link } from "react-router-dom";
 import registerLogo from "../../constants/icons/registerLogo.png";

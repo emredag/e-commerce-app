@@ -10,7 +10,7 @@ import SetCookie from "../../hooks/setCookie";
 function Form(props) {
   const { pathname } = useLocation();
   const navigate = useNavigate();
-  const { isLogin, setLogin } = useContext(AuthContext);
+  const { setLogin } = useContext(AuthContext);
 
   // *********** Yup Validation ***********
   const validation = Yup.object({

@@ -1,14 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import ReactDom from "react-dom";
 import { Link } from "react-router-dom";
 import { toastBuySuccess, toastError } from "../../constants/Toastify";
 import OneProductContext from "../../contexts/OneProductContext";
 import GetCookie from "../../hooks/getCookie";
-import {
-  fetchBuyProduct,
-  fetchOneProduct,
-  fetchProducts,
-} from "../../services/Services";
+import { fetchBuyProduct, fetchOneProduct } from "../../services/Services";
 import LoadingSpinner from "../global/LoadingSpinner";
 
 export default function BuyModal({ open, onClose, productId }) {

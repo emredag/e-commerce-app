@@ -27,7 +27,7 @@ function CategoriesCard() {
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     const categoryID = queryParams.get("catagoryId");
-    setCurrentCategory(categoryID ? categoryID : 0);
+    setCurrentCategory(categoryID ? Number(categoryID) : 0);
   }, [searchParams]);
 
   const ref = useRef(null);
@@ -38,7 +38,9 @@ function CategoriesCard() {
       <div ref={ref} onMouseDown={onMouseDown} className="categoryCard">
         <div
           onClick={() => setSearchParams({ catagoryId: 0 })}
-          className={`categoryName ${currentCategory == 0 && "activeCategory"}`}
+          className={`categoryName ${
+            currentCategory === 0 && "activeCategory"
+          }`}
         >
           Hepsi
         </div>
@@ -47,7 +49,7 @@ function CategoriesCard() {
             <div
               onClick={() => setSearchParams({ catagoryId: item.id })}
               className={`categoryName ${
-                currentCategory == item.id && "activeCategory"
+                currentCategory === item.id && "activeCategory"
               }`}
               key={index}
             >

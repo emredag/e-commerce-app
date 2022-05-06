@@ -1,5 +1,5 @@
 import { Field, Form, Formik } from "formik";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import ReactDom from "react-dom";
 import { toastBuySuccess, toastError } from "../../constants/Toastify";
 import OneProductContext from "../../contexts/OneProductContext";
@@ -17,7 +17,6 @@ import LoadingSpinner from "../global/LoadingSpinner";
 export default function SendOffer({ open, onClose, productId }) {
   const { oneProduct, setOneProduct, setOffers, loading, setLoading } =
     useContext(OneProductContext);
-  const isLogin = GetCookie("login");
 
   const clearInput = () => {
     document.getElementById("customPrice").value = "";
