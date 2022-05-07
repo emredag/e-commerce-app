@@ -27,10 +27,7 @@ function Router() {
           element={isLogin ? <Navigate replace to="/" /> : <LoginPage />}
         />
 
-        <Route
-          path="/add-product"
-          element={!isLogin ? <Navigate replace to="/" /> : <AddProductPage />}
-        />
+        <Route path="/add-product" element={isLogin && <AddProductPage />} />
 
         <Route path="/product/:productId" element={<ProductDetailPage />} />
       </Routes>

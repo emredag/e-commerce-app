@@ -22,6 +22,11 @@ export default function SendOffer({ open, onClose, productId }) {
     document.getElementById("customPrice").value = "";
   };
 
+  const errorMsg = () => {
+    setLoading(false);
+    toastError("Geçerli bir teklif belirleyiniz");
+  };
+
   if (!open) return null;
 
   return ReactDom.createPortal(
@@ -63,7 +68,7 @@ export default function SendOffer({ open, onClose, productId }) {
                   .finally(() => {
                     setLoading(false);
                   })
-              : toastError("Geçerli bir teklif belirleyiniz");
+              : errorMsg();
           }}
         >
           {({ values, handleChange }) =>

@@ -19,8 +19,6 @@ function Form(props) {
   });
   // **************************************
 
-  // const backPage = navigate(-1 == undefined ? "/" : -1);
-
   return (
     <div className="registerLoginForm">
       <Formik
@@ -87,7 +85,7 @@ function Form(props) {
           <>
             <div className="formTitle">
               <div className="title">{props.title}</div>
-              <div id="a" className="smallTitle">
+              <div className="smallTitle">
                 Fırsatlardan yararlanmak için {props.smallTitle}
               </div>
             </div>

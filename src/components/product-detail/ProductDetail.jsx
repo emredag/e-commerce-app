@@ -112,7 +112,7 @@ function ProductDetail() {
               {item.price ? item.price : "Bilinmiyor"} TL
             </div>
 
-            {givenOffer && (
+            {givenOffer && givenOffer.isStatus === null && (
               <div className="givenOffer">
                 <span>Verilen Teklif:</span> {givenOffer.offerPrice} TL
               </div>
@@ -153,7 +153,7 @@ function ProductDetail() {
                 </div>
               )}
 
-              {givenOffer && (
+              {givenOffer && givenOffer.isStatus === null && (
                 <div className="sendOfferBtn">
                   <button className="btn btn-primary" onClick={deleteOffer}>
                     Teklifi Geri Çek

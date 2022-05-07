@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     GetCookie("login") && setLogin(true);
-  }, []);
+  });
 
   const values = {
     isLogin,

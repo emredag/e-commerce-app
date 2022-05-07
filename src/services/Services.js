@@ -8,6 +8,9 @@ const URL = {
   product: "products",
   categories: "categories",
   offer: "offers",
+  brands: "brands",
+  color: "colors",
+  status: "using-statuses",
 };
 
 export const fetchRegister = async (input) => {
@@ -47,5 +50,25 @@ export const fetchSendOffer = async (input) => {
 
 export const fetchDeletOffer = async (offerId) => {
   const data = await axios.delete(`${baseURL}/${URL.offer}/${offerId}`);
+  return data;
+};
+
+export const fetchBrands = async () => {
+  const data = await axios.get(`${baseURL}/${URL.brands}`);
+  return data;
+};
+
+export const fetchColors = async () => {
+  const data = await axios.get(`${baseURL}/${URL.color}`);
+  return data;
+};
+
+export const fetchStatus = async () => {
+  const data = await axios.get(`${baseURL}/${URL.status}`);
+  return data;
+};
+
+export const fetchAddProduct = async (input) => {
+  const data = await axios.post(`${baseURL}/${URL.product}`, input);
   return data;
 };

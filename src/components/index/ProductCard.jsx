@@ -15,7 +15,6 @@ function ProductCard() {
         const product = response.data;
         setAllProduct(product);
         setLoading(false);
-        console.log(product);
       })
       .catch((error) => {
         console.log(error);

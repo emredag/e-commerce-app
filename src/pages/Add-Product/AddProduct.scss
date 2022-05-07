@@ -1,0 +1,235 @@
+@import "../../styles/color.scss";
+
+.addProductPage {
+  height: 91.4vh;
+  background-color: $pages-bg-color;
+  padding-top: 2rem;
+}
+
+.addProductContainer {
+  display: flex;
+  margin-left: 22rem;
+  margin-right: 22rem;
+  width: 148rem;
+  height: 81.2rem;
+  background-color: $navbar-bg-color;
+  border-radius: 0.8rem;
+  padding: 3rem;
+
+  .errorBorder {
+    background-color: $error-input !important;
+    border: 1px solid $error-input-border !important;
+  }
+
+  .imageError {
+    background-color: $error-input !important;
+    border: 1px dashed $error-input-border !important;
+  }
+
+  .uploadLeftSide {
+    width: 55%;
+    border-right: 1px solid $pages-bg-color;
+
+    .leftTitle {
+      font-size: 2.5rem;
+      color: $input-title-color;
+      font-weight: bold;
+    }
+
+    .uploadForm {
+      margin-top: 2.5rem;
+
+      .productInput {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 2.5rem;
+
+        .productLabel {
+          font-size: 1.5rem;
+          color: $input-title-color;
+        }
+
+        input,
+        select,
+        textarea {
+          background-color: $input-bg-color;
+          border-radius: 0.8rem;
+          border: none;
+          padding: 1rem;
+        }
+      }
+
+      .productName input {
+        width: 73rem;
+        height: 4.5rem;
+      }
+
+      .productDesc textarea {
+        width: 73rem;
+        height: 9.2rem;
+      }
+
+      .smallInput {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0rem 2.5rem;
+
+        .productCategory select,
+        .productBrand select,
+        .productColor select,
+        .productStatus select {
+          width: 35.3rem;
+          height: 4.5rem;
+        }
+      }
+
+      .productPrice input {
+        width: 23.6rem;
+        height: 4.5rem;
+      }
+
+      .productOfferable {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .productSubmit {
+        position: absolute;
+        bottom: 4rem;
+        right: 25rem;
+        button {
+          background-color: $navbar-btn-color;
+          border-radius: 0.8rem;
+          width: 31.5rem;
+          height: 4.5rem;
+        }
+      }
+    }
+  }
+
+  .uploadRightSide {
+    width: 45%;
+
+    .righTitle {
+      margin-left: 4.5rem;
+      font-size: 2.5rem;
+      color: $input-title-color;
+      font-weight: bold;
+    }
+
+    .uploadBox {
+      width: 59.5rem;
+      height: 16.4rem;
+      background-color: transparent;
+      border: 1px dashed $offer-radio-btn;
+      border-radius: 1rem;
+      margin-left: 4.5rem;
+      margin-top: 2.5rem;
+    }
+  }
+}
+
+.tgl {
+  display: none;
+
+  &,
+  &:after,
+  &:before,
+  & *,
+  & *:after,
+  & *:before,
+  & + .tgl-btn {
+    box-sizing: border-box;
+    &::selection {
+      background: none;
+    }
+  }
+
+  + .tgl-btn {
+    outline: 0;
+    display: block;
+    width: 4em;
+    height: 2em;
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+    &:after,
+    &:before {
+      position: relative;
+      display: block;
+      content: "";
+      width: 50%;
+      height: 100%;
+    }
+
+    &:after {
+      left: 0;
+    }
+
+    &:before {
+      display: none;
+    }
+  }
+
+  &:checked + .tgl-btn:after {
+    left: 50%;
+  }
+}
+
+.tgl-skewed {
+  + .tgl-btn {
+    overflow: hidden;
+    transform: skew(-10deg);
+    backface-visibility: hidden;
+    transition: all 0.2s ease;
+    font-family: sans-serif;
+    background: #888;
+    &:after,
+    &:before {
+      transform: skew(10deg);
+      display: inline-block;
+      transition: all 0.2s ease;
+      width: 100%;
+      text-align: center;
+      position: absolute;
+      line-height: 2em;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    }
+
+    &:after {
+      left: 100%;
+      content: attr(data-tg-on);
+    }
+
+    &:before {
+      left: 0;
+      content: attr(data-tg-off);
+    }
+
+    &:active {
+      background: #888;
+      &:before {
+        left: -10%;
+      }
+    }
+  }
+
+  &:checked + .tgl-btn {
+    background: #86d993;
+    &:before {
+      left: -100%;
+    }
+
+    &:after {
+      left: 0;
+    }
+
+    &:active:after {
+      left: 10%;
+    }
+  }
+}
