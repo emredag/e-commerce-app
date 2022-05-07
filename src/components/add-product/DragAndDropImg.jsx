@@ -29,9 +29,10 @@ function DragAndDropImg() {
       className={`uploadBox ${!image && "imageError"}`}
     >
       <img src={addProductIcon} alt="Ürün Yükle" />
-      <p className="uploadTitle">Sürükleyip bırakarak yükle veya</p>
+      <p className="uploadTitle">Sürükleyip bırakarak yükle</p>
+      <p className="dragOrSelect">veya</p>
       <Button className="uploadImage">Görsel Seçin</Button>
-      <p>PNG ve JPEG Dosya boyutu: max. 400kb</p>
+      <p className="fileType">PNG ve JPEG Dosya boyutu: max. 400kb</p>
     </Dragger>
   );
 }

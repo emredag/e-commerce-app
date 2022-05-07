@@ -26,6 +26,11 @@
     border: 1px dashed $error-input-border !important;
   }
 
+  .errorMsg {
+    margin-top: 0.4rem;
+    color: red;
+  }
+
   .uploadLeftSide {
     width: 55%;
     border-right: 1px solid $pages-bg-color;
@@ -127,6 +132,32 @@
       border-radius: 1rem;
       margin-left: 4.5rem;
       margin-top: 2.5rem;
+
+      .uploadTitle {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: $input-title-color;
+      }
+
+      .dragOrSelect {
+        font-size: 1.4rem;
+        color: $input-title-color;
+      }
+
+      .uploadImage {
+        width: 12.2rem;
+        height: 3rem;
+        border-radius: 1.5rem;
+        background-color: $input-bg-color;
+      }
+
+      .fileType {
+        font-size: 1.2rem;
+        color: $offer-radio-btn;
+      }
+    }
+    .ant-upload-list-picture {
+      margin-left: 4.5rem;
     }
   }
 }

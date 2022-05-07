@@ -62,21 +62,21 @@ function AddProduct() {
   const validation = Yup.object({
     name: Yup.string()
       .max(100, "Maksimum 100 karakter girebilirsiniz")
-      .required("Ürün adını giriniz"),
+      .required("Ürün adı zorunlu"),
     description: Yup.string()
       .max(500, "Maksimum 500 karakter girebilirsiniz")
-      .required("Ürün açıklaması giriniz"),
+      .required("Ürün açıklaması zorunlu"),
     category: Yup.number()
       .typeError("Katagori seçiniz")
-      .required("Katagori seçiniz"),
+      .required("Katagori zorunlu"),
     brand: Yup.string(),
     color: Yup.string(),
     status: Yup.string()
       .typeError("Kullanım durumu seçiniz")
-      .required("Kullanım durumu seçiniz"),
+      .required("Kullanım durumu zorunlu"),
     price: Yup.number()
       .typeError("0-9 Arasında Bir Rakam Girin")
-      .required("Ürün fiyatı giriniz"),
+      .required("Ürün fiyatı zorunlu"),
     isOfferable: Yup.boolean(),
   });
   // **************************************
@@ -117,7 +117,7 @@ function AddProduct() {
               .then((response) => {
                 console.log(response.data);
                 toastSuccess("Ürününüz yüklendi.");
-                navigate(`/product/${response.data.id}`);
+                navigate(`/productId=${response.data.id}`);
               })
               .catch((error) => {
                 console.log(error);
@@ -126,7 +126,7 @@ function AddProduct() {
           : toastError("Ürün görseli yükleyiniz!");
       }}
     >
-      {({ values, errors, handleChange, handleSubmit }) => (
+      {({ values, errors, handleChange, handleSubmit, touched }) => (
         <>
           <div className="uploadLeftSide">
             <div className="leftTitle">Ürün Detayları</div>
@@ -143,7 +143,9 @@ function AddProduct() {
                   onChange={handleChange}
                   className={`${errors.name && "errorBorder"}`}
                 />
-                {errors.name && <div className="errorMsg">{errors.name}</div>}
+                {touched && errors.name && (
+                  <div className="errorMsg">{errors.name}</div>
+                )}
               </div>
 
               <div className="productDesc productInput">
@@ -158,7 +160,7 @@ function AddProduct() {
                   onChange={handleChange}
                   className={`${errors.description && "errorBorder"}`}
                 />
-                {errors.description && (
+                {touched && errors.description && (
                   <div className="errorMsg">{errors.description}</div>
                 )}
               </div>
@@ -181,7 +183,7 @@ function AddProduct() {
                       );
                     })}
                   </select>
-                  {errors.category && (
+                  {touched && errors.category && (
                     <div className="errorMsg">{errors.category}</div>
                   )}
                 </div>
@@ -206,7 +208,7 @@ function AddProduct() {
                       );
                     })}
                   </select>
-                  {errors.brand && (
+                  {touched && errors.brand && (
                     <div className="errorMsg">{errors.brand}</div>
                   )}
                 </div>
@@ -231,7 +233,7 @@ function AddProduct() {
                       );
                     })}
                   </select>
-                  {errors.color && (
+                  {touched && errors.color && (
                     <div className="errorMsg">{errors.color}</div>
                   )}
                 </div>
@@ -257,6 +259,9 @@ function AddProduct() {
                       );
                     })}
                   </select>
+                  {touched && errors.status && (
+                    <div className="errorMsg">{errors.status}</div>
+                  )}
                 </div>
               </div>
 
@@ -272,7 +277,7 @@ function AddProduct() {
                   onChange={handleChange}
                   className={`${errors.price && "errorBorder"}`}
                 />
-                {errors.price && <div>{errors.price}</div>}
+                {errors.price && <div className="errorMsg">{errors.price}</div>}
               </div>
 
               <div className="productOfferable">
