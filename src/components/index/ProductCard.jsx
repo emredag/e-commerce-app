@@ -24,7 +24,7 @@ function ProductCard() {
   const product = (item, index) => {
     return (
       <div className="productCard" key={index}>
-        <Link to={`product/${item.id}`}>
+        <Link to={`productId=${item.id}`}>
           <div className="productImg">
             <img
               src={

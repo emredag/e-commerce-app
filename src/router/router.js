@@ -29,7 +29,7 @@ function Router() {
 
         <Route path="/add-product" element={isLogin && <AddProductPage />} />
 
-        <Route path="/product/:productId" element={<ProductDetailPage />} />
+        <Route path="/productId=:productId" element={<ProductDetailPage />} />
       </Routes>
     </div>
   );
