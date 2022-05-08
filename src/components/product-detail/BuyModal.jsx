@@ -34,8 +34,6 @@ export default function BuyModal({ open, onClose, productId }) {
       });
   };
 
-  // // !onClose && toastBuySuccess("Satın Alındı");
-
   const isLogin = GetCookie("login");
 
   if (!open) return null;

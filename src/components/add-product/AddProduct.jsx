@@ -116,6 +116,11 @@ function AddProduct() {
 
         setLoading(true);
 
+        const errorImg = () => {
+          setLoading(false);
+          toastError("Ürün görseli yükleyiniz!");
+        };
+
         image
           ? fetchAddProduct(newData)
               .then((response) => {
@@ -129,7 +134,7 @@ function AddProduct() {
                 setLoading(false);
                 toastError("Ürün yüklenemedi.");
               })
-          : toastError("Ürün görseli yükleyiniz!");
+          : errorImg();
       }}
     >
       {({ values, errors, handleChange, handleSubmit, touched }) =>

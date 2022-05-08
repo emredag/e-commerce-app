@@ -38,8 +38,8 @@ function ProfileDetail() {
 
       <div className="myOfferCards">
         {currentCategory === "teklif-aldıklarım" && <MyOffers />}
+        {currentCategory === "teklif-verdiklerim" && <GivenOffers />}
       </div>
-      {currentCategory === "teklif-verdiklerim" && <GivenOffers />}
     </div>
   );
 }

@@ -68,7 +68,7 @@ function ProductDetail() {
         .catch((error) => {
           setOneProduct();
         });
-      console.log(response);
+
       toastSuccess("Teklif Geri Çekildi");
     });
   };
