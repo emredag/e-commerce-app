@@ -26,7 +26,7 @@ function DragAndDropImg() {
         return false;
       }}
       {...dragAndDrop}
-      className={`uploadBox ${!image && "imageError"}`}
+      className="uploadBox"
     >
       <img src={addProductIcon} alt="Ürün Yükle" />
       <p className="uploadTitle">Sürükleyip bırakarak yükle</p>

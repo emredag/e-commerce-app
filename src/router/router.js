@@ -35,8 +35,10 @@ function Router() {
           element={!isLogin ? <Navigate replace to="/" /> : <AddProductPage />}
         />
 
-        {/* !isLogin ? <Navigate replace to="/" /> : */}
-        <Route path="/profile" element={<ProfilePage />} />
+        <Route
+          path="/profile"
+          element={!isLogin ? <Navigate replace to="/" /> : <ProfilePage />}
+        />
       </Routes>
     </div>
   );
