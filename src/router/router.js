@@ -32,12 +32,12 @@ function Router() {
 
         <Route
           path="/addProduct"
-          element={!isLogin ? <Navigate replace to="/" /> : <AddProductPage />}
+          element={!isLogin ? <Navigate to="/" /> : <AddProductPage />}
         />
 
         <Route
           path="/profile"
-          element={!isLogin ? <Navigate replace to="/" /> : <ProfilePage />}
+          element={!isLogin ? <Navigate to="/" /> : <ProfilePage />}
         />
       </Routes>
     </div>

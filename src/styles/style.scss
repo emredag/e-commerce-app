@@ -1,15 +1,33 @@
+// Desktop Styles
+
+// Global Styles
 @import url(./reset.css);
 @import url(./toastify.scss);
-@import url(../pages//Register-Login-Page/formPage.scss);
-@import url(../pages//Product-Detail/productDetail.scss);
-@import url(../pages//Add-Product/AddProduct.scss);
-@import url(../pages/Index/index.scss);
-@import url(../pages/Profile/profilePage.scss);
-@import url(../components/navbar/navbar.scss);
 @import url(./loading.scss);
-@import url(../components//product-detail/BuyModal.scss);
-@import url(../components//product-detail/SendOffer.scss);
+@import url(./color.scss);
 
-html {
-  font-size: 10px; // 1rem = 10px
-}
+// Register Login Page
+@import url(../pages/Register-Login-Page/formPage.scss);
+@import url(./Responsive/Register-Login/mobileFormPage.scss);
+
+// Navbar
+@import url(../components/navbar/navbar.scss);
+@import url(./Responsive/Navbar/mobileNavbar.scss);
+
+// Home / Index Page
+@import url(../pages/Index/index.scss);
+@import url(./Responsive/Index/mobileIndexPage.scss);
+
+// Product Detail
+@import url(../pages/Product-Detail/productDetail.scss);
+@import url(../components/product-detail/BuyModal.scss);
+@import url(../components/product-detail/SendOffer.scss);
+@import url(./Responsive/Product-Detail/mobileProductDetail.scss);
+
+// Add Product
+@import url(../pages/Add-Product/AddProduct.scss);
+@import url(./Responsive/Add-Product/mobileAddProduct.scss);
+
+// Profile
+@import url(../pages/Profile/profilePage.scss);
+@import url(./Responsive/Profile/mobileProfile.scss);
