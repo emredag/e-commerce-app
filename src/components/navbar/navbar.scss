@@ -5,7 +5,7 @@
   justify-content: space-between;
   height: 8rem;
   background-color: $navbar-bg-color;
-  padding: 2rem 22rem;
+  padding: 2rem 19.5rem;
 
   .navRightSide {
     button {
@@ -16,8 +16,9 @@
       border-radius: 0.8rem;
       width: 12.5rem;
       height: 4rem;
+      font-weight: bold;
+      font-size: 1.5rem;
 
-      font: normal normal bold 1.5rem Nunito;
       img {
         width: 1.2rem;
         height: 1.2rem;

@@ -1,0 +1,209 @@
+@import "../../styles/color.scss";
+
+.profilePage {
+  min-height: 91.4vh;
+  background-color: $pages-bg-color;
+  padding-top: 2rem;
+
+  .userInfoContainer {
+    display: flex;
+    margin-left: 22rem;
+    margin-right: 22rem;
+    width: 148rem;
+    height: 7rem;
+    background-color: $navbar-bg-color;
+    border-radius: 0.8rem;
+    padding: 3rem;
+
+    .userInfo {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: center;
+
+      .user {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+
+        img {
+          width: 3.8rem;
+          height: 3.8rem;
+        }
+
+        span {
+          font-size: 1.5rem;
+          font-weight: bold;
+          color: $input-title-color;
+        }
+      }
+
+      button {
+        margin-left: 1rem;
+        border: none;
+        border-radius: 0.8rem;
+        width: 12.5rem;
+        height: 4rem;
+
+        font: normal normal bold 1.5rem Nunito;
+        img {
+          width: 1.2rem;
+          height: 1.2rem;
+          margin-right: 0.2rem;
+        }
+      }
+    }
+  }
+
+  .offersContainer {
+    display: flex;
+    margin: 1rem 22rem;
+    width: 148rem;
+    min-height: 70.9rem;
+    background-color: $navbar-bg-color;
+    border-radius: 0.8rem;
+    padding: 3rem;
+
+    .products {
+      .profileCategories {
+        width: 142rem;
+        border-bottom: 1px solid $stick;
+
+        .categoryCard {
+          display: flex;
+          gap: 3.4rem;
+
+          .categoryName {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: $input-title-color;
+            cursor: pointer;
+            padding-bottom: 1.5rem;
+          }
+          .categoryName:hover {
+            color: $navbar-btn-color;
+            border-bottom: 2px solid $navbar-btn-color;
+          }
+
+          .activeCategory {
+            color: $navbar-btn-color;
+            border-bottom: 2px solid $navbar-btn-color;
+          }
+        }
+      }
+
+      .myOfferCards {
+        display: flex;
+        flex-direction: column-reverse;
+        margin-top: 2rem;
+        gap: 2rem;
+
+        .productCard {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 141.3rem;
+          height: 10.4rem;
+          border: 1px solid $pages-bg-color;
+          border-radius: 0.8rem;
+          padding: 1rem;
+
+          .productInfo {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+
+            .productImg img {
+              width: 7.8rem;
+              height: 8.4rem;
+              border-radius: 0.8rem;
+              object-fit: cover;
+              cursor: pointer;
+            }
+
+            .productName {
+              .name {
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+                font-size: 1.8rem;
+                color: $detail-title;
+                img {
+                  cursor: pointer;
+                }
+              }
+
+              .offerPrice {
+                display: flex;
+                align-items: center;
+                gap: 0.7rem;
+                width: 23rem;
+                height: 3.6rem;
+                background-color: $pages-bg-color;
+                border-radius: 0.8rem;
+                font-size: 1.5rem;
+                color: $offer-radio-btn;
+                padding: 0.8rem;
+                margin-top: 0.7rem;
+                span {
+                  font-weight: bold;
+                  color: $input-title-color;
+                }
+              }
+            }
+          }
+
+          .offerStatus {
+            .offerBtns {
+              display: flex;
+              gap: 1rem;
+
+              .acceptOffer {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 8.6rem;
+                height: 3rem;
+                background-color: $navbar-btn-color;
+                border-radius: 0.8rem;
+                cursor: pointer;
+                font-size: 1.5rem;
+                color: $navbar-bg-color;
+              }
+
+              .rejectOffer {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 8.6rem;
+                height: 3rem;
+                background-color: $error-input-border;
+                border-radius: 0.8rem;
+                cursor: pointer;
+                font-size: 1.5rem;
+                color: $navbar-bg-color;
+              }
+            }
+
+            .offerAccepted {
+              font-size: 1.5rem;
+              color: $navbar-btn-color;
+            }
+
+            .offerRejected {
+              font-size: 1.5rem;
+              color: $error-input-border;
+            }
+
+            .noOffer,
+            .notOfferable {
+              font-size: 1.5rem;
+              color: $sold-product;
+            }
+          }
+        }
+      }
+    }
+  }
+}

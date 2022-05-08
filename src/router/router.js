@@ -7,6 +7,7 @@ import { ToastContainer } from "react-toastify";
 import AuthContext from "../contexts/AuthContext";
 import ProductDetailPage from "../pages/Product-Detail/ProductDetailPage";
 import AddProductPage from "../pages/Add-Product/AddProductPage";
+import ProfilePage from "../pages/Profile/ProfilePage";
 
 function Router() {
   const { isLogin } = useContext(AuthContext);
@@ -27,9 +28,15 @@ function Router() {
           element={isLogin ? <Navigate replace to="/" /> : <LoginPage />}
         />
 
-        <Route path="/add-product" element={isLogin && <AddProductPage />} />
-
         <Route path="/productId=:productId" element={<ProductDetailPage />} />
+
+        <Route
+          path="/addProduct"
+          element={!isLogin ? <Navigate replace to="/" /> : <AddProductPage />}
+        />
+
+        {/* !isLogin ? <Navigate replace to="/" /> : */}
+        <Route path="/profile" element={<ProfilePage />} />
       </Routes>
     </div>
   );

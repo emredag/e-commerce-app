@@ -6,6 +6,7 @@ import { fetchRegister, fetchLogin } from "../../services/Services";
 import { toastError, toastSuccess } from "../../constants/Toastify";
 import AuthContext from "../../contexts/AuthContext";
 import SetCookie from "../../hooks/setCookie";
+import addCookie from "../../hooks/addCookie";
 
 function Form(props) {
   const { pathname } = useLocation();
@@ -38,9 +39,7 @@ function Form(props) {
                 .then((response) => {
                   setLogin(true);
 
-                  SetCookie("authToken", response.data.jwt);
-                  SetCookie("login", true);
-                  SetCookie("userId", response.data.user.id);
+                  addCookie(response.data);
 
                   toastSuccess("Kayıt başarılı. Hoşgeldiniz!");
 
@@ -60,9 +59,7 @@ function Form(props) {
                 .then((response) => {
                   setLogin(true);
 
-                  SetCookie("authToken", response.data.jwt);
-                  SetCookie("login", true);
-                  SetCookie("userId", response.data.user.id);
+                  addCookie(response.data);
 
                   toastSuccess("Giriş başarılı. Hoşgeldiniz!");
                   navigate("/");

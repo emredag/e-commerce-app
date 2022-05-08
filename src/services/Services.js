@@ -72,3 +72,27 @@ export const fetchAddProduct = async (input) => {
   const data = await axios.post(`${baseURL}/${URL.product}`, input);
   return data;
 };
+
+export const fetchUserProducts = async (userId) => {
+  const data = await axios.get(
+    `${baseURL}/${URL.product}?users_permissions_user=${userId}`
+  );
+  return data;
+};
+
+export const fetchUserOffers = async (userId) => {
+  const data = await axios.get(
+    `${baseURL}/${URL.offer}?users_permissions_user=${userId}`
+  );
+  return data;
+};
+
+export const fetchAcceptOffer = async (productId, input) => {
+  const data = await axios.put(`${baseURL}/${URL.offer}/${productId}`, input);
+  return data;
+};
+
+export const fetchDeleteProduct = async (userId) => {
+  const data = await axios.delete(`${baseURL}/${URL.product}/${userId}`);
+  return data;
+};

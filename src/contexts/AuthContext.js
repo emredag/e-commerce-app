@@ -4,10 +4,10 @@ import GetCookie from "../hooks/getCookie";
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [isLogin, setLogin] = useState(false);
+  const [isLogin, setLogin] = useState();
 
   useEffect(() => {
-    GetCookie("login") && setLogin(true);
+    GetCookie("login") ? setLogin(true) : setLogin(false);
   });
 
   const values = {

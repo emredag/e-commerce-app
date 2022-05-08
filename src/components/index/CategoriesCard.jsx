@@ -6,9 +6,9 @@ import { fetchCategories } from "../../services/Services";
 function CategoriesCard() {
   const {
     allCategories,
+    setAllCategories,
     currentCategory,
     setCurrentCategory,
-    setAllCategories,
     searchParams,
     setSearchParams,
   } = useContext(ProductContext);

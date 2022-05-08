@@ -6,20 +6,9 @@ import loginLogo from "../../constants/icons/loginLogo.png";
 import profileLogo from "../../constants/icons/profile.png";
 import addProduct from "../../constants/icons/addProductLogo.png";
 import AuthContext from "../../contexts/AuthContext";
-import RemoveCookie from "../../hooks/removeCookie";
-import { toastSuccess } from "../../constants/Toastify";
 
 function Navbar() {
-  const { isLogin, setLogin } = useContext(AuthContext);
-
-  const logOut = () => {
-    setLogin(false);
-    RemoveCookie("authToken");
-    RemoveCookie("userId");
-    RemoveCookie("login");
-    toastSuccess("Çıkış yapıldı.");
-    window.location.reload();
-  };
+  const { isLogin } = useContext(AuthContext);
 
   return (
     <div className="navbar">
@@ -31,31 +20,27 @@ function Navbar() {
 
       {isLogin ? (
         <div className="navRightSide">
-          <Link to="/add-product">
-            <button className="btn btn-primary register">
+          <Link to="/addProduct">
+            <button className="btn btn-primary ">
               <img src={addProduct} alt="Ürün Ekle Logosu" /> Ürün ekle
             </button>
           </Link>
 
           <Link to="/profile">
-            <button className="btn btn-primary register">
+            <button className="btn btn-primary ">
               <img src={profileLogo} alt="Profil Logosu" /> Hesabım
             </button>
           </Link>
-
-          <button onClick={logOut} className="btn btn-primary register">
-            <img src={loginLogo} alt="Çıkış Yap Logosu" /> Çıkış yap
-          </button>
         </div>
       ) : (
         <div className="navRightSide">
           <Link to="/register">
-            <button className="btn btn-primary register">
+            <button className="btn btn-primary ">
               <img src={registerLogo} alt="Kayıt Ol Logosu" /> Üye Ol
             </button>
           </Link>
           <Link to="/login">
-            <button className="btn btn-primary register">
+            <button className="btn btn-primary ">
               <img src={loginLogo} alt="Giriş Yap Logosu" /> Giriş Yap
             </button>
           </Link>

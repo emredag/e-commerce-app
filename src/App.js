@@ -5,7 +5,7 @@ import Navbar from "./components/navbar/Navbar";
 import { AuthProvider } from "./contexts/AuthContext";
 import { OneProductProvider } from "./contexts/OneProductContext";
 import { ProductProvider } from "./contexts/ProductContext";
-
+import { ProfileProvider } from "./contexts/ProfileContext";
 import GetCookie from "./hooks/getCookie";
 import Router from "./router/router";
 import "./styles/style.scss";
@@ -34,12 +34,14 @@ function App() {
   return (
     <>
       <AuthProvider>
-        <OneProductProvider>
+        <ProfileProvider>
           <ProductProvider>
-            {pathname !== "/register" && pathname !== "/login" && <Navbar />}
-            <Router />
+            <OneProductProvider>
+              {pathname !== "/register" && pathname !== "/login" && <Navbar />}
+              <Router />
+            </OneProductProvider>
           </ProductProvider>
-        </OneProductProvider>
+        </ProfileProvider>
       </AuthProvider>
     </>
   );
