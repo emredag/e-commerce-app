@@ -106,11 +106,11 @@ function GivenOffers() {
               </div>
             )}
 
-            {item?.product.isSold && (
+            {item.product.isSold && item.isStatus && (
               <div className="offerAccepted">Satın alındı</div>
             )}
 
-            {item?.isStatus === false && (
+            {item.isStatus === false && (
               <div className="offerRejected">Reddedildi</div>
             )}
           </div>

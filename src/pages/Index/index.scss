@@ -3,10 +3,11 @@
 .indexPage {
   background-color: $pages-bg-color;
   padding-bottom: 15rem;
+  min-height: 85.2rem;
 }
 .indexContainer {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 22rem;
+  margin-right: 22rem;
   min-width: 57.5rem;
   display: flex;
   flex-direction: column;
@@ -51,7 +52,7 @@
 
   .indexProducts {
     display: flex;
-    justify-content: space-between;
+    justify-content: baseline;
     flex-flow: wrap;
     gap: 1.5rem;
     width: 100%;

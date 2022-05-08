@@ -25,11 +25,10 @@ export default function BuyModal({ open, onClose, productId }) {
           });
 
         toastBuySuccess("Satın Alındı");
+        setLoading(false);
       })
       .catch((error) => {
         toastError("Giriş Yapmalısınız!");
-      })
-      .finally(() => {
         setLoading(false);
       });
   };

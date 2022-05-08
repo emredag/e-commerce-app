@@ -17,6 +17,8 @@ function ProductDetail() {
   const [buyOpen, setBuyOpen] = useState(false);
   const [offerOpen, setOfferOpen] = useState(false);
 
+  const userId = GetCookie("userId");
+
   const {
     oneProduct,
     setOneProduct,
@@ -50,7 +52,7 @@ function ProductDetail() {
   let givenOffer;
 
   offers.map((item) => {
-    if (item.users_permissions_user === Number(GetCookie("userId"))) {
+    if (item.users_permissions_user === Number(userId)) {
       givenOffer = item;
     } else {
       return null;
@@ -118,57 +120,61 @@ function ProductDetail() {
               </div>
             )}
 
-            <div className="detailBtn">
-              {!item.isSold && (
-                <div className="buyModalBtn">
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => setBuyOpen(true)}
-                  >
-                    Satın Al
-                  </button>
+            {item?.users_permissions_user?.id === Number(userId) ? (
+              <div className="soldProduct">Senin Ürünün</div>
+            ) : (
+              <div className="detailBtn">
+                {!item.isSold && (
+                  <div className="buyModalBtn">
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => setBuyOpen(true)}
+                    >
+                      Satın Al
+                    </button>
 
-                  <BuyModal
-                    open={buyOpen}
-                    onClose={() => setBuyOpen(false)}
-                    productId={productId}
-                  ></BuyModal>
-                </div>
-              )}
+                    <BuyModal
+                      open={buyOpen}
+                      onClose={() => setBuyOpen(false)}
+                      productId={productId}
+                    ></BuyModal>
+                  </div>
+                )}
 
-              {item.isOfferable && !givenOffer && !item.isSold && (
-                <div className="sendOfferBtn">
-                  <button
-                    className="btn btn-primary"
-                    onClick={() => setOfferOpen(true)}
-                  >
-                    Teklif Ver
-                  </button>
+                {item.isOfferable && !givenOffer && !item.isSold && (
+                  <div className="sendOfferBtn">
+                    <button
+                      className="btn btn-primary"
+                      onClick={() => setOfferOpen(true)}
+                    >
+                      Teklif Ver
+                    </button>
 
-                  <SendOffer
-                    open={offerOpen}
-                    onClose={() => setOfferOpen(false)}
-                    productId={productId}
-                  ></SendOffer>
-                </div>
-              )}
+                    <SendOffer
+                      open={offerOpen}
+                      onClose={() => setOfferOpen(false)}
+                      productId={productId}
+                    ></SendOffer>
+                  </div>
+                )}
 
-              {givenOffer && givenOffer.isStatus === null && (
-                <div className="sendOfferBtn">
-                  <button className="btn btn-primary" onClick={deleteOffer}>
-                    Teklifi Geri Çek
-                  </button>
-                </div>
-              )}
+                {givenOffer && givenOffer.isStatus === null && (
+                  <div className="sendOfferBtn">
+                    <button className="btn btn-primary" onClick={deleteOffer}>
+                      Teklifi Geri Çek
+                    </button>
+                  </div>
+                )}
 
-              {item.isSold && (
-                <div className="soldProduct">Bu Ürün Satışta Değil</div>
-              )}
+                {item.isSold && (
+                  <div className="soldProduct">Bu Ürün Satışta Değil</div>
+                )}
 
-              {!item.isOfferable && !item.isSold && (
-                <div className="soldProduct">Teklif Kabul Edilmiyor</div>
-              )}
-            </div>
+                {!item.isOfferable && !item.isSold && (
+                  <div className="soldProduct">Teklif Kabul Edilmiyor</div>
+                )}
+              </div>
+            )}
 
             <div className="detailDesc">
               <div className="descTitle">Açıklama</div>

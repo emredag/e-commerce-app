@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import ProductContext from "../../contexts/ProductContext";
 import CategoriesCard from "../../components/index/CategoriesCard";
 import ProductCard from "../../components/index/ProductCard";
-// import banner from "../../constants/images/indexPageBanner.png";
 import LoadingSpinner from "../../components/global/LoadingSpinner";
+import GetNewProduct from "../../components/index/GetNewProduct";
 
 function IndexPage() {
   const { loading } = useContext(ProductContext);
@@ -20,6 +20,8 @@ function IndexPage() {
           <CategoriesCard />
 
           <ProductCard />
+
+          <GetNewProduct />
         </div>
       </div>
     </>
