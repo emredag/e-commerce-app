@@ -1,0 +1,77 @@
+@media only screen and (max-width: 1440px) {
+  .productDetailPage {
+    height: auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  .productDetailContainer {
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+    width: 100%;
+    margin-bottom: 5.5rem;
+
+    .detailLeftSide {
+      .detailImage {
+        display: flex;
+        justify-content: center;
+        img {
+          padding: 1rem;
+          width: 100%;
+          height: 36.2rem;
+          object-fit: contain;
+          margin: 0;
+        }
+      }
+    }
+
+    .detailRightSide {
+      .rightSideContainer {
+        display: flex;
+        flex-direction: column;
+
+        .detailTitle {
+          font-size: 1.8rem;
+          order: 1;
+        }
+
+        .detailInfo {
+          order: 3;
+          .detailBox {
+            .detailBoxTitle {
+            }
+          }
+        }
+
+        .detailPrice {
+        }
+
+        .givenOffer {
+          order: 2;
+          span {
+          }
+        }
+
+        .detailBtn {
+          justify-content: center;
+          width: 85%;
+
+          position: fixed;
+          bottom: 1rem;
+
+          button {
+            width: 15rem;
+          }
+        }
+
+        .detailDesc {
+          order: 4;
+          .descTitle {
+          }
+        }
+      }
+    }
+  }
+}
