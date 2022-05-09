@@ -21,8 +21,9 @@ function Navbar() {
       {isLogin ? (
         <div className="navRightSide">
           <Link to="/addProduct">
-            <button className="btn btn-primary ">
-              <img src={addProduct} alt="Ürün Ekle Logosu" /> Ürün ekle
+            <button className="btn btn-primary addProduct">
+              <img src={addProduct} alt="Ürün Ekle Logosu" />
+              <span>Ürün ekle</span>
             </button>
           </Link>
 
@@ -41,7 +42,7 @@ function Navbar() {
           </Link>
           <Link to="/login">
             <button className="btn btn-primary ">
-              <img src={loginLogo} alt="Giriş Yap Logosu" /> Giriş Yap
+              <img src={profileLogo} alt="Giriş Yap Logosu" /> Giriş Yap
             </button>
           </Link>
         </div>

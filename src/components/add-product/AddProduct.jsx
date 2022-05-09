@@ -3,62 +3,20 @@ import React, { useContext, useEffect, useState } from "react";
 import * as Yup from "yup";
 import ProductContext from "../../contexts/ProductContext";
 import GetCookie from "../../hooks/getCookie";
-import {
-  fetchAddProduct,
-  fetchBrands,
-  fetchCategories,
-  fetchColors,
-  fetchStatus,
-} from "../../services/Services";
+import { fetchAddProduct } from "../../services/Services";
 import "antd/dist/antd.css";
-import { Upload, Button } from "antd";
 import { toastError, toastSuccess } from "../../constants/Toastify";
 import { useNavigate } from "react-router-dom";
 import DragAndDropImg from "./DragAndDropImg";
 import LoadingSpinner from "../global/LoadingSpinner";
 
 function AddProduct() {
-  const { brands, setBrands, colors, setColors, status, setStatus, image } =
+  const { brands, colors, status, image, categories } =
     useContext(ProductContext);
 
-  const [allCategories, setAllCategories] = useState([]);
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
-
-  useEffect(() => {
-    fetchBrands()
-      .then((response) => {
-        setBrands(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    fetchColors()
-      .then((response) => {
-        setColors(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    fetchStatus()
-      .then((response) => {
-        setStatus(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-
-    fetchCategories()
-      .then((response) => {
-        setAllCategories(response.data);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
 
   // *********** Yup Validation ***********
   const validation = Yup.object({
@@ -97,6 +55,8 @@ function AddProduct() {
       }}
       validationSchema={validation}
       onSubmit={(values) => {
+        setLoading(true);
+
         let data = {
           name: values.name,
           description: values.description,
@@ -113,8 +73,6 @@ function AddProduct() {
         const newData = new FormData();
         newData.append("data", JSON.stringify(data));
         newData.append("files.image", image);
-
-        setLoading(true);
 
         const errorImg = () => {
           setLoading(false);
@@ -191,7 +149,7 @@ function AddProduct() {
                       className={`${errors.category && "errorBorder"}`}
                     >
                       <option label="Kategori Seç" disabled />
-                      {allCategories.map((item, index) => {
+                      {categories.map((item, index) => {
                         return (
                           <option
                             value={item.id}
@@ -327,8 +285,6 @@ function AddProduct() {
               <div className="righTitle">Ürün Görseli</div>
               <div className="productImage">
                 <DragAndDropImg />
-
-                {/* {!image && <div className="errorBorder">Ürün görseli yüklemelisiniz</div>} */}
               </div>
             </div>
           </>

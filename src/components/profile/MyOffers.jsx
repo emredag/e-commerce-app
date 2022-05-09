@@ -21,15 +21,11 @@ function MyOffers() {
   const userId = GetCookie("userId");
 
   useEffect(() => {
-    setLoading(true);
     fetchUserProducts(userId)
       .then((response) => {
         setProducts(response.data);
-        setLoading(false);
       })
-      .catch((error) => {
-        console.log(error);
-        setLoading(false);
+      .catch(() => {
         toastError("Bir sorunla karşılaşıldı");
       });
   }, []);

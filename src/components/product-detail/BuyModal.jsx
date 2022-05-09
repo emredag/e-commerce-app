@@ -9,6 +9,7 @@ import LoadingSpinner from "../global/LoadingSpinner";
 
 export default function BuyModal({ open, onClose, productId }) {
   const { setOneProduct, loading, setLoading } = useContext(OneProductContext);
+  const isLogin = GetCookie("login");
 
   const buyClick = () => {
     setLoading(true);
@@ -31,8 +32,6 @@ export default function BuyModal({ open, onClose, productId }) {
         setLoading(false);
       });
   };
-
-  const isLogin = GetCookie("login");
 
   if (!open) return null;
 

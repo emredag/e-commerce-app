@@ -14,110 +14,134 @@ import {
   toastError,
   toastSuccess,
 } from "../../constants/Toastify";
+import BuyModal from "../product-detail/BuyModal";
 
 function GivenOffers() {
   const [userOffers, setUserOffers] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [buyOpen, setBuyOpen] = useState(false);
 
   const userId = GetCookie("userId");
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetchUserOffers(userId).then((response) => {
-      setUserOffers(response.data);
-    });
+    fetchUserOffers(userId)
+      .then((response) => {
+        setUserOffers(response.data);
+      })
+      .catch(() => {
+        toastError("Bir hata oluştu");
+      });
   }, []);
 
   const buyClick = (id) => {
+    setLoading(true);
     fetchBuyProduct(id, { isOfferable: false, isSold: true })
       .then(() => {
         fetchUserOffers(userId).then((response) => {
           setUserOffers(response.data);
+          setLoading(false);
         });
-
+        setLoading(false);
         toastBuySuccess("Satın Alındı");
       })
-      .catch((error) => {
+      .catch(() => {
+        setLoading(false);
         toastError("Bir hata oluştu!");
       });
   };
 
   const deleteOffer = (id) => {
-    fetchDeletOffer(id).then((response) => {
-      fetchUserOffers(userId).then((response) => {
-        setUserOffers(response.data);
-        toastSuccess("Teklif Geri Çekildi");
+    setLoading(true);
+    fetchDeletOffer(id)
+      .then((response) => {
+        fetchUserOffers(userId).then((response) => {
+          setUserOffers(response.data);
+          setLoading(false);
+          toastSuccess("Teklif Geri Çekildi");
+        });
+      })
+      .catch(() => {
+        setLoading(false);
+        toastError("Bir hata oluştu");
       });
-    });
   };
 
-  return userOffers.map((item) => {
-    return (
-      item.product && (
-        <div key={item.id} className="productCard">
-          <div className="productInfo">
-            <div className="productImg">
-              <img
-                src={
-                  `${item?.product?.image}` === "null"
-                    ? undifendProduct
-                    : `${baseURL}${item?.product?.image?.url}`
-                }
-                alt="Ürün resmi"
-                onClick={() => {
-                  navigate(`/productId=${item.product.id}`);
-                }}
-              />
-            </div>
+  return loading ? (
+    <LoadingSpinner />
+  ) : (
+    userOffers.map((item) => {
+      return (
+        item.product && (
+          <div key={item.id} className="productCard">
+            <div className="productInfo">
+              <div className="productImg">
+                <img
+                  src={
+                    `${item?.product?.image}` === "null"
+                      ? undifendProduct
+                      : `${baseURL}${item?.product?.image?.url}`
+                  }
+                  alt="Ürün resmi"
+                  onClick={() => {
+                    navigate(`/productId=${item.product.id}`);
+                  }}
+                />
+              </div>
 
-            <div className="productName">
-              <div className="name">{item.product.name}</div>
+              <div className="productName">
+                <div className="name">{item.product.name}</div>
 
-              <div className="offerPrice">
-                Verilen teklif: <span>{item.offerPrice} TL</span>
+                <div className="offerPrice">
+                  Verilen teklif: <span>{item.offerPrice} TL</span>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="offerStatus">
-            {item.isStatus === null && !item.product.isSold && (
-              <div className="offerAccepted">Satıcıdan cevap bekleniyor</div>
-            )}
+            <div className="offerStatus">
+              {item.isStatus === null && !item.product.isSold && (
+                <div className="offerAccepted">Satıcıdan cevap bekleniyor</div>
+              )}
 
-            {item.isStatus === true && !item.product.isSold && (
-              <div className="offerBtns">
-                <div
-                  className="acceptOffer"
-                  onClick={() => {
-                    buyClick(item.product.id);
-                  }}
-                >
-                  Satın Al
+              {item.isStatus === true && !item.product.isSold && (
+                <div className="offerBtns">
+                  <button
+                    className="acceptOffer"
+                    onClick={() => setBuyOpen(true)}
+                  >
+                    Satın Al
+                  </button>
+
+                  <BuyModal
+                    open={buyOpen}
+                    onClose={() => setBuyOpen(false)}
+                    productId={item.product.id}
+                  ></BuyModal>
+                  <div
+                    className="acceptOffer"
+                    onClick={() => {
+                      deleteOffer(item.id);
+                    }}
+                  >
+                    Vazgeç
+                  </div>
+                  <div className="offerAccepted">Onaylandı</div>
                 </div>
-                <div
-                  className="acceptOffer"
-                  onClick={() => {
-                    deleteOffer(item.id);
-                  }}
-                >
-                  Vazgeç
-                </div>
-                <div className="offerAccepted">Onaylandı</div>
-              </div>
-            )}
+              )}
 
-            {item.product.isSold && item.isStatus && (
-              <div className="offerAccepted">Satın alındı</div>
-            )}
+              {item.product.isSold && item.isStatus && (
+                <div className="offerAccepted">Satın alındı</div>
+              )}
 
-            {item.isStatus === false && (
-              <div className="offerRejected">Reddedildi</div>
-            )}
+              {item.isStatus === false && (
+                <div className="offerRejected">Reddedildi</div>
+              )}
+            </div>
           </div>
-        </div>
-      )
-    );
-  });
+        )
+      );
+    })
+  );
 }
 
 export default GivenOffers;

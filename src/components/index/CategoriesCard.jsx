@@ -4,31 +4,8 @@ import ProductContext from "../../contexts/ProductContext";
 import { fetchCategories } from "../../services/Services";
 
 function CategoriesCard() {
-  const {
-    allCategories,
-    setAllCategories,
-    currentCategory,
-    setCurrentCategory,
-    searchParams,
-    setSearchParams,
-  } = useContext(ProductContext);
-
-  useEffect(() => {
-    fetchCategories()
-      .then((response) => {
-        const categories = response.data;
-        setAllCategories(categories);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
-  useEffect(() => {
-    const queryParams = new URLSearchParams(window.location.search);
-    const categoryID = queryParams.get("catagoryId");
-    setCurrentCategory(categoryID ? Number(categoryID) : 0);
-  }, [searchParams]);
+  const { allCategories, currentCategory, setSearchParams } =
+    useContext(ProductContext);
 
   const ref = useRef(null);
   const { onMouseDown } = useDraggableScroll(ref);
@@ -44,6 +21,7 @@ function CategoriesCard() {
         >
           Hepsi
         </div>
+
         {allCategories.map((item, index) => {
           return (
             <div

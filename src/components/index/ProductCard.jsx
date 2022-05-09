@@ -2,25 +2,12 @@ import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import undifendProduct from "../../constants/images/undifendProduct.jpg";
 import ProductContext from "../../contexts/ProductContext";
-import { fetchProducts, baseURL } from "../../services/Services";
+import { baseURL } from "../../services/Services";
 
 function ProductCard() {
-  const { allProduct, currentCategory, setAllProduct, setLoading } =
-    useContext(ProductContext);
+  const { allProduct, currentCategory } = useContext(ProductContext);
 
-  useEffect(() => {
-    setLoading(true);
-    fetchProducts()
-      .then((response) => {
-        const product = response.data;
-        setAllProduct(product);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, []);
-
+  // Product Card
   const product = (item, index) => {
     return (
       <div className="productCard" key={index}>
@@ -35,20 +22,21 @@ function ProductCard() {
               alt="Ürün resmi"
             />
           </div>
-        </Link>
 
-        <div className="productInfo">
-          <div className="productBrand">
-            {item.brand ? item.brand : "Marka Bilinmiyor"}
+          <div className="productInfo">
+            <div className="productBrand">
+              {item.brand ? item.brand : "Marka Bilinmiyor"}
+            </div>
+            <div className="productColor">
+              <span>Renk:</span> {item.color ? item.color : "Bilinmiyor"}
+            </div>
           </div>
-          <div className="productColor">
-            <span>Renk:</span> {item.color ? item.color : "Bilinmiyor"}
-          </div>
-        </div>
-        <div className="productPrice">{item.price} TL</div>
+          <div className="productPrice">{item.price} TL</div>
+        </Link>
       </div>
     );
   };
+  // *************
 
   return (
     <div className="indexProducts">

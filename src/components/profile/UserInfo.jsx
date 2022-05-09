@@ -16,8 +16,8 @@ function UserInfo() {
   const logOutBtn = () => {
     setLogin(false);
     logOut();
-    toastSuccess("Çıkış yapıldı.");
     navigate("/");
+    toastSuccess("Çıkış yapıldı.");
   };
 
   return (

@@ -10,7 +10,7 @@ function ProfileDetail() {
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
     const categoryName = queryParams.get("show");
-    setCurrentCategory(categoryName ? categoryName : "teklif-aldıklarım");
+    setCurrentCategory(categoryName ? categoryName : "teklif-aldiklarim");
   }, [searchParams]);
 
   return (
@@ -18,9 +18,9 @@ function ProfileDetail() {
       <div className="profileCategories">
         <div className="categoryCard">
           <div
-            onClick={() => setSearchParams({ show: "teklif-aldıklarım" })}
+            onClick={() => setSearchParams({ show: "teklif-aldiklarim" })}
             className={`categoryName ${
-              currentCategory === "teklif-aldıklarım" && "activeCategory"
+              currentCategory === "teklif-aldiklarim" && "activeCategory"
             }`}
           >
             Teklif Aldıklarım
@@ -37,7 +37,7 @@ function ProfileDetail() {
       </div>
 
       <div className="myOfferCards">
-        {currentCategory === "teklif-aldıklarım" && <MyOffers />}
+        {currentCategory === "teklif-aldiklarim" && <MyOffers />}
         {currentCategory === "teklif-verdiklerim" && <GivenOffers />}
       </div>
     </div>

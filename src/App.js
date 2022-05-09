@@ -20,14 +20,14 @@ function App() {
   return (
     <>
       <AuthProvider>
-        <ProfileProvider>
-          <ProductProvider>
+        <ProductProvider>
+          <ProfileProvider>
             <OneProductProvider>
               {pathname !== "/register" && pathname !== "/login" && <Navbar />}
               <Router />
             </OneProductProvider>
-          </ProductProvider>
-        </ProfileProvider>
+          </ProfileProvider>
+        </ProductProvider>
       </AuthProvider>
     </>
   );
