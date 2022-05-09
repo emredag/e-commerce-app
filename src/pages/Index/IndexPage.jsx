@@ -20,8 +20,6 @@ function IndexPage() {
           <CategoriesCard />
 
           <ProductCard />
-
-          <GetNewProduct />
         </div>
       </div>
     </>

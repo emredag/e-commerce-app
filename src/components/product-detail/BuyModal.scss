@@ -1,6 +1,7 @@
 @import "../../styles/color.scss";
 
-.soldProduct {
+.soldProduct,
+.noBuy {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,6 +15,10 @@
   font-size: 1.8rem;
   font-weight: bold;
   margin-top: 3rem;
+}
+.noBuy {
+  width: 46rem;
+  height: 5rem;
 }
 
 .buyModalBtn {

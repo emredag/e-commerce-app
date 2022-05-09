@@ -41,7 +41,7 @@ export default function SendOffer({ open, onClose, productId }) {
           }}
           onSubmit={(values) => {
             setLoading(true);
-
+            onClose(false);
             Number(values.perCent)
               ? fetchSendOffer({
                   product: oneProduct.id.toString(),
@@ -49,8 +49,6 @@ export default function SendOffer({ open, onClose, productId }) {
                   offerPrice: Number(values.perCent),
                 })
                   .then(() => {
-                    onClose(false);
-
                     fetchOneProduct(productId)
                       .then((response) => {
                         setOneProduct(response.data);

@@ -121,7 +121,9 @@ function ProductDetail() {
             )}
 
             {item?.users_permissions_user?.id === Number(userId) ? (
-              <div className="soldProduct">Senin Ürünün</div>
+              <div className="noBuy">
+                Kendi ürününüze teklif veremez ve satın alamazsınız.
+              </div>
             ) : (
               <div className="detailBtn">
                 {!item.isSold && (

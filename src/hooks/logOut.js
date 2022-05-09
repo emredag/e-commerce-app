@@ -5,6 +5,7 @@ function logOut() {
   RemoveCookie("userId");
   RemoveCookie("login");
   RemoveCookie("mail");
+  window.location.reload();
 }
 
 export default logOut;

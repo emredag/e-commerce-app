@@ -4,13 +4,13 @@ import RegisterPage from "../pages/Register-Login-Page/RegisterPage";
 import IndexPage from "../pages/Index/IndexPage";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import AuthContext from "../contexts/AuthContext";
 import ProductDetailPage from "../pages/Product-Detail/ProductDetailPage";
 import AddProductPage from "../pages/Add-Product/AddProductPage";
 import ProfilePage from "../pages/Profile/ProfilePage";
+import GetCookie from "../hooks/getCookie";
 
 function Router() {
-  const { isLogin } = useContext(AuthContext);
+  const isLogin = GetCookie("login");
 
   return (
     <div>
@@ -32,12 +32,12 @@ function Router() {
 
         <Route
           path="/addProduct"
-          element={!isLogin ? <Navigate to="/" /> : <AddProductPage />}
+          element={!isLogin ? <Navigate replace to="/" /> : <AddProductPage />}
         />
 
         <Route
           path="/profile"
-          element={!isLogin ? <Navigate to="/" /> : <ProfilePage />}
+          element={!isLogin ? <Navigate replace to="/" /> : <ProfilePage />}
         />
       </Routes>
     </div>

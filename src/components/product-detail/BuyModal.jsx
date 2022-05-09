@@ -12,10 +12,9 @@ export default function BuyModal({ open, onClose, productId }) {
 
   const buyClick = () => {
     setLoading(true);
+    onClose(false);
     fetchBuyProduct(productId, { isOfferable: false, isSold: true })
       .then(() => {
-        onClose(false);
-
         fetchOneProduct(productId)
           .then((response) => {
             setOneProduct(response.data);

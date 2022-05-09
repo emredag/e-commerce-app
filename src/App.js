@@ -6,30 +6,16 @@ import { AuthProvider } from "./contexts/AuthContext";
 import { OneProductProvider } from "./contexts/OneProductContext";
 import { ProductProvider } from "./contexts/ProductContext";
 import { ProfileProvider } from "./contexts/ProfileContext";
+import addAuthorization from "./hooks/addAuthorization";
+
 import GetCookie from "./hooks/getCookie";
 import Router from "./router/router";
 import "./styles/style.scss";
 
 function App() {
   const { pathname } = useLocation();
-  const getToken = GetCookie("authToken");
-  const signature = `Bearer ${getToken}`;
 
-  useEffect(() => {
-    if (getToken) {
-      axios.interceptors.request.use(
-        (config) => {
-          config.headers.authorization = signature;
-          config.headers.accept = "application/json";
-          config.headers["Content-Type"] = "application/json";
-          return config;
-        },
-        (error) => {
-          return Promise.reject(error);
-        }
-      );
-    }
-  }, []);
+  addAuthorization();
 
   return (
     <>
