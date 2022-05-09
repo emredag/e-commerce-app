@@ -1,0 +1,41 @@
+@media only screen and (max-width: 767px) {
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    height: 6rem;
+    padding: 1rem 1.5rem;
+
+    .navRightSide {
+      button {
+        margin-left: 1rem;
+        border: none;
+        border-radius: 0.8rem;
+        width: 11rem;
+        height: 4rem;
+        font-weight: bold;
+        font-size: 1.5rem;
+
+        img {
+          width: 1.2rem;
+          height: 1.2rem;
+          margin-right: 0.2rem;
+        }
+      }
+      .addProduct {
+        width: 4rem;
+        height: 4rem;
+        span {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1440px) {
+  .navbar {
+    height: 8rem;
+    padding-left: 10rem;
+    padding-right: 10rem;
+  }
+}
