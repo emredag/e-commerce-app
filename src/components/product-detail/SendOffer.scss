@@ -52,8 +52,6 @@
 }
 
 .sendOffer {
-  // display: flex;
-  // flex-direction: column;
   .offerTitle {
     display: flex;
     justify-content: space-between;
@@ -182,4 +180,52 @@ input[type="radio"]:checked::before {
 input[type="radio"]:focus {
   outline: max(1px, 0.15em) solid #4b9ce2;
   outline-offset: max(1px, 0.15em);
+}
+
+@media only screen and (max-width: 1440px) {
+  .offer-modals {
+    width: 35.5rem;
+    height: 43.7rem;
+  }
+  .sendOffer {
+    .offerTitle {
+      .title {
+        font-size: 1.8rem;
+      }
+    }
+
+    .sendOfferProduct {
+      width: 31.5rem;
+      height: 4.5rem;
+
+      .offerImg {
+        display: flex;
+        align-items: center;
+        img {
+          width: 3.6rem;
+          height: 3.6rem;
+        }
+
+        .productName {
+          font-size: 1.3rem;
+        }
+      }
+      .productPrice {
+        font-size: 1.5rem;
+      }
+    }
+
+    .sendOfferForm {
+      .perCentDefaults {
+        width: 31.5rem;
+        height: 4.5rem;
+      }
+      .perCentCustom {
+        input {
+          width: 31.5rem;
+          height: 4.5rem;
+        }
+      }
+    }
+  }
 }

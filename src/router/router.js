@@ -14,7 +14,7 @@ function Router() {
 
   return (
     <div>
-      <ToastContainer />
+      <ToastContainer closeButton={false} />
       <Routes>
         <Route path="/" element={<IndexPage />} />
 
