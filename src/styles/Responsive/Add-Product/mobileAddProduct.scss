@@ -1,0 +1,174 @@
+@import "../../color.scss";
+
+@media only screen and (max-width: 767px) {
+  .addProductPage {
+    height: auto;
+    background-color: $pages-bg-color;
+    padding-top: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .addProductContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    width: 100%;
+    height: auto;
+    background-color: $navbar-bg-color;
+    border-radius: 0.8rem;
+    padding: 2rem;
+
+    .errorBorder {
+      background-color: $error-input !important;
+      border: 1px solid $error-input-border !important;
+    }
+
+    .errorMsg {
+      margin-top: 0.4rem;
+      color: red;
+    }
+
+    .uploadLeftSide {
+      display: flex;
+      flex-direction: column;
+      border: none;
+
+      .leftTitle {
+        font-size: 2rem;
+      }
+
+      .uploadForm {
+        margin-top: 2rem;
+
+        .productInput {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+          margin-bottom: 2.5rem;
+
+          .productLabel {
+            font-size: 1.5rem;
+            color: $input-title-color;
+          }
+
+          input,
+          select,
+          textarea {
+            background-color: $input-bg-color;
+            border-radius: 0.8rem;
+            border: none;
+            padding: 1rem;
+          }
+        }
+
+        .productName input {
+          width: 31.5rem;
+          height: 4.5rem;
+        }
+
+        .productDesc textarea {
+          width: 31.5rem;
+          height: 9.2rem;
+        }
+
+        .smallInput {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0rem 2.5rem;
+
+          .productCategory select,
+          .productBrand select,
+          .productColor select,
+          .productStatus select {
+            width: 31.5rem;
+            height: 4.5rem;
+          }
+        }
+
+        .productPrice input {
+          width: 31.5rem;
+          height: 4.5rem;
+        }
+
+        .productOfferable {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        .productSubmit {
+          position: relative;
+          bottom: 0;
+          right: 0;
+          margin-top: 2rem;
+          margin-bottom: 2rem;
+          button {
+            background-color: $navbar-btn-color;
+            border-radius: 0.8rem;
+            width: 31.5rem;
+            height: 4.5rem;
+          }
+        }
+      }
+    }
+
+    .uploadRightSide {
+      display: flex;
+      flex-direction: column;
+      .righTitle {
+        margin-left: 0;
+        font-size: 2.5rem;
+        color: $input-title-color;
+        font-weight: bold;
+      }
+
+      .uploadBox {
+        margin-top: 5rem;
+        width: 33.5rem;
+        height: 11.3rem;
+        background-color: transparent;
+        border: 1px dashed $offer-radio-btn;
+        border-radius: 1rem;
+        margin-left: 0;
+
+        img {
+          width: 2rem;
+          height: 2rem;
+          margin-top: -2rem;
+        }
+
+        .uploadTitle {
+          font-size: 1.2rem;
+          font-weight: 600;
+          color: $input-title-color;
+        }
+
+        .dragOrSelect {
+          display: none;
+        }
+
+        .uploadImage {
+          width: 12.2rem;
+          height: 3rem;
+          border-radius: 1.5rem;
+          background-color: $input-bg-color;
+        }
+
+        .fileType {
+          margin-top: 0.5rem;
+          font-size: 1.2rem;
+          color: $offer-radio-btn;
+        }
+      }
+      .ant-upload-list-picture {
+        margin-left: 0;
+      }
+    }
+  }
+}
