@@ -13,7 +13,7 @@ Projenin amacı ikinci el ürünleri almak veya satmak isteyen kişilerin kolay 
 
 
 ## Proje Hakkında
-Kullanıcı siteye girdikten sonra üye olmadan ilana koyulmuş ürünleri görüntüleyebilir. Ürünleri satın almak isterse veya teklif vermek isterse kullanıcının üye olması gerekmektedir. Üye olduktan sonra dileği ürüne işlem gerçekleştirebilmektedir.
+Kullanıcı siteye girdikten sonra üye olmadan ilana koyulmuş ürünleri görüntüleyebilir. Ürünleri satın almak isterse veya teklif vermek isterse kullanıcının üye olması gerekmektedir. Üye olduktan sonra dilediği ürüne işlem gerçekleştirebilmektedir.
 
 Kullanıcı ürünlerini satmak istediğinde ürün yükleme sayfasından ürünün bilgilerini yazarak, resmini yükleyerek ve dilediği takdirde teklif opsiyonunu da açarak ürünlerini yükleyebilmektedir. 
 
