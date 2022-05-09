@@ -28,14 +28,7 @@ export const fetchCategories = () => {
   return data;
 };
 
-export const fetchProducts = async (limit) => {
-  const data = await axios.get(
-    `${baseURL}/${URL.product}?_limit=${limit ? limit : 20}`
-  );
-  return data;
-};
-
-export const fetchAllProducts = async () => {
+export const fetchProducts = async () => {
   const data = await axios.get(`${baseURL}/${URL.product}`);
   return data;
 };
