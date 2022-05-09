@@ -1,0 +1,231 @@
+@media only screen and (max-width: 475px) {
+  .indexContainer {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    min-width: 0;
+
+    .indexBanner {
+      margin-top: 1rem;
+    }
+
+    .indexCategories {
+      .categoryCard {
+        gap: 1.5rem;
+
+        .categoryName {
+          padding-bottom: 0.7rem;
+        }
+      }
+    }
+
+    .indexProducts {
+      justify-content: space-between;
+
+      gap: 1rem;
+
+      .productCard {
+        width: 48%;
+        height: 266px;
+
+        .productImg {
+          img {
+            height: 18.4rem;
+            padding: 0 0.6rem 0 0.6rem;
+            border-radius: 0.8rem;
+            object-fit: cover;
+          }
+        }
+        .productInfo {
+          display: flex;
+          flex-direction: column;
+
+          .productColor {
+            span {
+              font: normal normal bold 1rem Nunito;
+            }
+            font: normal normal normal 1rem Nunito;
+          }
+        }
+
+        .productPrice {
+          margin-top: 0.5rem;
+          font: normal normal bold 1.5rem Nunito;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 475px) and (max-width: 768px) {
+  .indexContainer {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    min-width: 0;
+
+    .indexBanner {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .indexCategories {
+      .categoryCard {
+        gap: 2rem;
+      }
+    }
+
+    .indexProducts {
+      justify-content: space-between;
+      gap: 1rem;
+
+      .productCard {
+        width: 30%;
+        height: 266px;
+
+        .productImg {
+          img {
+            width: 100%;
+            height: 18.4rem;
+            padding: 0 0.6rem 0 0.6rem;
+            border-radius: 0.8rem;
+          }
+        }
+        .productInfo {
+          flex-direction: column;
+
+          .productColor {
+            span {
+              font: normal normal bold 1rem Nunito;
+            }
+            font: normal normal normal 1rem Nunito;
+          }
+        }
+
+        .productPrice {
+          margin-top: 0.5rem;
+          font: normal normal bold 1.5rem Nunito;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .indexContainer {
+    margin-left: 10rem;
+    margin-right: 10rem;
+    min-width: 0;
+
+    .indexBanner {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .indexCategories {
+      .categoryCard {
+        gap: 2.2rem;
+      }
+    }
+
+    .indexProducts {
+      justify-content: space-between;
+      gap: 1rem;
+
+      .productCard {
+        width: 30%;
+        height: 266px;
+
+        .productImg {
+          img {
+            width: 100%;
+            height: 18.4rem;
+          }
+        }
+        .productInfo {
+          .productColor {
+            span {
+              font: normal normal bold 1.4rem Nunito;
+            }
+            font: normal normal normal 1.4rem Nunito;
+          }
+        }
+
+        .productPrice {
+          margin-top: 1.7rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1440px) {
+  .indexContainer {
+    margin-left: 10rem;
+    margin-right: 10rem;
+
+    .indexBanner {
+      width: 100%;
+      margin-top: 1rem;
+    }
+
+    .indexCategories {
+      margin-top: 3rem;
+
+      .categoryCard {
+        gap: 2rem;
+
+        .categoryName {
+          font: normal normal 600 1.8rem Nunito;
+
+          padding-bottom: 0.7rem;
+        }
+      }
+    }
+
+    .indexProducts {
+      justify-content: space-between;
+      gap: 1rem;
+
+      .productCard {
+        width: 24%;
+        height: 266px;
+        border-radius: 0.8rem;
+
+        .productImg {
+          img {
+            width: 100%;
+            height: 18.4rem;
+          }
+        }
+        .productInfo {
+          .productColor {
+            span {
+              font: normal normal bold 1.5rem Nunito;
+            }
+            font: normal normal normal 1.5rem Nunito;
+          }
+        }
+
+        .productPrice {
+          margin-top: 1.5rem;
+          font: normal normal bold 1.5rem Nunito;
+        }
+      }
+    }
+  }
+}
+@media only screen and (min-width: 1440px) {
+  .indexContainer {
+    .indexBanner {
+      margin-top: 1rem;
+    }
+
+    .indexProducts {
+      justify-content: space-around;
+      gap: 1rem;
+
+      .productCard {
+        border-radius: 0.8rem;
+      }
+    }
+  }
+}
