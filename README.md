@@ -1,5 +1,6 @@
 
 # Patika & React Bootcamp Bitirme Projesi
+![logo](https://user-images.githubusercontent.com/67982673/167364757-e96fef0c-bc66-428d-959a-d335fb24e56b.png)
 
 Proje Patika & React Bootcamp'in bitirme projesidir. 
 
