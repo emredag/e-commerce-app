@@ -5,7 +5,7 @@
 Proje Patika & React Bootcamp'in bitirme projesidir. 
 
 ## Demo 
-https://ikinciel.emredag.com.tr
+https://ikinciel.emredag.com.tr (API kapatıldığı için demo çalışmıyor)
 
 
 ## Projenin Amacı
